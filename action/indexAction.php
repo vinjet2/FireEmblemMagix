@@ -10,6 +10,7 @@
         protected function executeAction() {
             $hasConnectionError = false;
             $data = [];
+            $result = null;
             $data["username"] = $_POST["username"] ?? NULL;
             $data["password"] = $_POST["password"] ?? NULL;
 
