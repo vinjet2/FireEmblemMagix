@@ -1,7 +1,7 @@
 <?php
-    require_once("action/lobbyAction.php");
+    require_once("action/LobbyAction.php");
 
-    $action = new lobbyAction();
+    $action = new LobbyAction();
     $data = $action->execute();
 
     require_once("partial/header.php");
