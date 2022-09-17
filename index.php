@@ -6,9 +6,18 @@
 
     require_once("partial/header.php");
 ?>
-<div>
-    <form action="index.php" method="POST">
-        <div class="formSeparator"></div>
+<script src="javascript/TiledImage.js"></script>
+<script src="javascript/sprite/Byleth.js"></script>
+<script src="javascript/animation.js"></script>
+<script src="javascript/javascript.js"></script>
+<script src="javascript/Jeu/index.js"></script>
+<div class="index" id="Background">
+    <div id="chibi_byleth"></div>
+	<div class="title"><img src="images/UI/FireEmblemIcon.png" alt="FireEmblem"></div>
+	<div class="text_info"><p>   Move with < and > arrow   Change from Male to Female with Down arrow</p></div>
+	<div class="formContainer">
+        <form action="index.php" method="POST">
+            <div class="formSeparator"></div>
             <div class="formLabel"><label for="username">Nom d'usager : </label></div>
             <div class="formInput"><input type="text" name="username" id="username"></div>
 
@@ -17,8 +26,9 @@
             <div class="formInput"><input type="password" name="password" id="password"></div>
 
             <div class="formSeparator"></div>
-            <div class="formInput"><button type="submit">Connexion</button></div>
-    </form>
+            <div class="formInput"><button type="submit" class="fontLabel">Connexion</button></div>
+        </form>
+    </div>
 </div>
 <?php
     require_once("partial/footer.php");
