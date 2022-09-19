@@ -51,6 +51,7 @@
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
 button {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
@@ -59,3 +60,7 @@ button {
     padding: 2px 4px;
     border: none;
 }
+
+/* *************************************************************************
+ 
+ **************************************************************************/
