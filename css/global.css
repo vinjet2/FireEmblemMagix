@@ -28,9 +28,9 @@ a:hover {
     height: 50px;
     position: absolute;
     padding: 25px 45px;
-    top: 10%;
+    bottom: 10%;
     color: rgb(164, 184, 164);
-    margin-left: 100px;
+    margin-left: 120px;
     font-weight: bolder;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-image: url(../images/Background/background_texte.png);

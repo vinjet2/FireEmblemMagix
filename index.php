@@ -14,7 +14,7 @@
 <div class="index" id="Background">
     <div id="chibi_byleth"></div>
 	<div class="title"><img src="images/UI/FireEmblemIcon.png" alt="FireEmblem"></div>
-	<div class="text_info"><p>   Move with < and > arrow   Change from Male to Female with Down arrow</p></div>
+	<div class="text_info"><p>   Move with < and > arrow   Change from Male to Female with V arrow</p></div>
 	<div class="formContainer">
         <form action="index.php" method="POST">
             <div class="formSeparator"></div>
