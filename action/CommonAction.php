@@ -13,11 +13,11 @@
         }
 
         public function execute() {
-            if (!empty($_GET["logout"])) {
-                session_unset();
-                session_detroy();
-                session_start();
-            }
+            // if (!empty($_GET["logout"])) {
+            //     session_unset();
+            //     session_detroy();
+            //     session_start();
+            // }
 
             if (empty($_SESSION["visibility"])) {
                 $_SESSION["visibility"] = CommonAction::$VISIBILITY_PUBLIC;
@@ -38,6 +38,12 @@
         // Pas encore utilisé
         public function isLoggedIn() {
             return $_SESSION["visibility"] > CommonAction::$VISIBILITY_PUBLIC;
+        }
+
+        public function isSignOut() {
+            session_unset();
+            session_detroy();
+            session_start();
         }
 
         /**

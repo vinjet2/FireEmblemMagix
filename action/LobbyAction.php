@@ -21,6 +21,7 @@
 					}
 					else {
 						unset($_SESSION["key"]);
+                        parent::isSignOut();
 						$_SESSION["visibility"] = parent::$VISIBILITY_PUBLIC;
 						header("location:index.php");
 						exit;

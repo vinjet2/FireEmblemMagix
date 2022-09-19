@@ -3,6 +3,10 @@
     padding: 0px;
 }
 
+a:hover {
+    color:white;
+}
+
 /* *************************************************************************
  INDEX.PHP
  **************************************************************************/
@@ -62,5 +66,49 @@ button {
 }
 
 /* *************************************************************************
- 
+ LOBBY.PHP
  **************************************************************************/
+
+ .lobby {
+    min-width: 100vh;
+    min-height: 100vh;
+    background: no-repeat center center fixed;
+    background-size: cover;
+    background-image: url(../images/Background/Sothis_Background.jpg);
+ }
+
+ .menu {
+    min-width: 100%;
+    min-height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button-banner {
+    min-width: 20%;
+    padding: 0px 10px;
+    align-self: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(../images/Background/Button_UI.png);
+}
+
+.button-text {
+    min-width: 20%;
+    padding-right: 60px;
+    font-size: 38px;
+    text-decoration: none;
+    color: rgb(30, 111, 30);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+}
+
+.clavardage {
+    width: fit-content;
+    position: fixed;
+    bottom:0;
+    right:0;
+    background-color: black;
+}

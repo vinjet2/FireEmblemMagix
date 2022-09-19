@@ -15,8 +15,8 @@ class Byleth {
         this.tiledImage.changeRow(6);
         this.tiledImage.changeMinMaxInterval(0,2);
 
-        this.x = (window.innerWidth/2);
-        this.y = (window.innerHeight - 100);
+        this.x = ((window.innerWidth/2) - 16);
+        this.y = (window.innerHeight - 110);
     }
 
     changeGender() {

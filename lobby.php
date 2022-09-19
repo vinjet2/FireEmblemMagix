@@ -30,7 +30,7 @@
 			<a class="button-text" href="notes.php">Notes</a>
 		</div>
 		<div class="button-banner">
-			<a class="button-text" href="http://localhost/FireEmblemCarte/?logout=true">Quitter</a>
+			<a class="button-text" href="lobby.php/?logout=true">Quitter</a>
 		</div>
 	</div>
 </div>
