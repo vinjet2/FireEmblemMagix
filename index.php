@@ -10,7 +10,6 @@
 <script src="javascript/sprite/Byleth.js"></script>
 <script src="javascript/animation.js"></script>
 <script src="javascript/javascript.js"></script>
-<script src="javascript/Jeu/index.js"></script>
 <div class="index" id="Background">
     <div id="chibi_byleth"></div>
 	<div class="title"><img src="images/UI/FireEmblemIcon.png" alt="FireEmblem"></div>

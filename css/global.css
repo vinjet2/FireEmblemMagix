@@ -70,7 +70,7 @@ button {
  **************************************************************************/
 
  .lobby {
-    min-width: 100vh;
+    /* min-width: 100vh; */
     min-height: 100vh;
     background: no-repeat center center fixed;
     background-size: cover;
@@ -78,16 +78,18 @@ button {
  }
 
  .menu {
-    min-width: 100%;
-    min-height: 200px;
+    width: fit-content;
+    position: fixed;
+    top:30%;
+    right:20%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
 }
 
 .button-banner {
-    min-width: 20%;
-    padding: 0px 10px;
+    width: 225px;
+    height: 40px;
     align-self: center;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -95,14 +97,13 @@ button {
 }
 
 .button-text {
-    min-width: 20%;
-    padding-right: 60px;
-    font-size: 38px;
+    font-size: 36px;
     text-decoration: none;
     color: rgb(30, 111, 30);
     font-family:Georgia, 'Times New Roman', Times, serif;
     display: flex;
     justify-content: center;
+    /* background-color: black; */
 }
 
 .clavardage {
