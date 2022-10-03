@@ -18,22 +18,26 @@
 		</iframe>
 	</div>
 	<div class="deck">
-		<iframe src="https://magix.apps-de-cours.com/server/#/deck/<?= $_SESSION["key"] ?>">
+		<iframe style="width:650px;height:500px;" src="https://magix.apps-de-cours.com/server/#/deck/<?= $_SESSION["key"] ?>">
 		</iframe>
 	</div>
 	<div class="menu">
 		<div class="button-banner">
 			<a class="button-text" href="board.php?partie=PVP">Jouer</a>
 		</div>
+		<div class="space"></div>
 		<div class="button-banner">
 			<a class="button-text" href="board.php?partie=TRAINING">Pratique</a>
 		</div>
+		<div class="space"></div>
 		<div class="button-banner">
 			<a class="button-text" href="deck.php">Deck</a>
 		</div>
+		<div class="space"></div>
 		<div class="button-banner">
 			<a class="button-text" href="notes.php">Notes</a>
 		</div>
+		<div class="space"></div>
 		<div class="button-banner">
 			<a class="button-text" href="lobby.php/?logout=true">Quitter</a>
 		</div>
