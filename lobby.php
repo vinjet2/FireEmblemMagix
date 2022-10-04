@@ -39,7 +39,7 @@
 		</div>
 		<div class="space"></div>
 		<div class="button-banner">
-			<a class="button-text" href="lobby.php/?logout=true">Quitter</a>
+			<a class="button-text" href="lobby.php?logout=true">Quitter</a>
 		</div>
 	</div>
 </div>
