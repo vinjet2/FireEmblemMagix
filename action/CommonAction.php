@@ -63,6 +63,7 @@
             $result = file_get_contents($apiURL, false, $context);
 
             if (strpos($result, "<br") !== false) {
+                var_dump($result);
                 exit;
             }
 

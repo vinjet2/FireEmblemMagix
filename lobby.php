@@ -22,12 +22,19 @@
 		</iframe>
 	</div>
 	<div class="menu">
+		<?php
+			if ($data["messageErreur"] != null){
+				?>
+				<p> <?= $data["messageErreur"] ?></p>
+				<?php
+			}
+		?>
 		<div class="button-banner">
-			<a class="button-text" href="board.php?partie=PVP">Jouer</a>
+			<a class="button-text" href="lobby.php?partie=PVP">Jouer</a>
 		</div>
 		<div class="space"></div>
 		<div class="button-banner">
-			<a class="button-text" href="board.php?partie=TRAINING">Pratique</a>
+			<a class="button-text" href="lobby.php?partie=TRAINING">Pratique</a>
 		</div>
 		<div class="space"></div>
 		<div class="button-banner">

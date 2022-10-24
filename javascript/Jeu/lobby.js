@@ -11,5 +11,5 @@ const applyStyles = iframe => {
 	
 	setTimeout(() => {
 		iframe.contentWindow.postMessage(JSON.stringify(styles), "*");	
-}, 100);
+	}, 100);
 }

@@ -13,7 +13,8 @@
             $result = null;
             $data["username"] = $_POST["username"] ?? NULL;
             $data["password"] = $_POST["password"] ?? NULL;
-
+            
+            // Connexion
             if (isset($_POST["username"]) && isset($_POST["password"])) {
                 $result = parent::callAPI("signin", $data);
 

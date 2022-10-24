@@ -43,6 +43,7 @@ class Byleth {
     // }
 
     tick() {
+
         if (leftArrowOn) {
             this.x--;
             if(this.gender == 0)
@@ -62,7 +63,7 @@ class Byleth {
             //this.tiledImage.changeMinMaxInterval(0,3);
             this.tiledImage.setFlipped(false);
         }
-
+        // Idle
         if (leftArrowOn == false && rightArrowOn == false) {
             if (this.gender == 0) 
                 this.tiledImage.changeRow(6);
