@@ -9,9 +9,9 @@ a:hover {
 
 /* *************************************************************************
  INDEX.PHP
- **************************************************************************/
+\* *************************************************************************/
  
- .index {
+.index {
     min-height: 100vh;
     background: no-repeat center center fixed;
     background-size: cover;
@@ -56,7 +56,7 @@ a:hover {
     transform: translate(-50%, -50%);
 }
 
-button {
+button { /* Tous les buttons*/
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
     background-color: rgb(42, 61, 43);
@@ -67,17 +67,17 @@ button {
 
 /* *************************************************************************
  LOBBY.PHP
- **************************************************************************/
+\* *************************************************************************/
 
- .lobby {
+.lobby {
     /* min-width: 100vh; */
     min-height: 100vh;
     background: no-repeat center center fixed;
     background-size: cover;
     background-image: url(../images/Background/Sothis_Background.jpg);
- }
+}
 
- .menu {
+.menu {
     width: fit-content;
     position: fixed;
     top:10%;
@@ -121,6 +121,195 @@ button {
 
 /* *************************************************************************
  Board .PHP
- **************************************************************************/
+\* *************************************************************************/
 
- 
+.board {
+    min-height: 100vh;
+    background: no-repeat center fixed;
+    background-size: cover;
+    background-image: url(../images/Background/Board_Background1.png);
+}
+
+/* *************************************************************************
+ Ennemi //Board.php
+\* *************************************************************************/
+
+.ennemis {
+    min-height: 39vh;
+    min-width: 100%;
+    background-color: #00000080;
+}
+
+.ennemis_UI {
+    min-width:100%;
+    min-height: 7vh;
+    display:flex;
+    background: bottom;
+    background-size: 100%;
+    background-image: url(../images/Background/Ennemis_background.png);
+}
+
+.ennemis_Portrait {
+    min-width: 25%;
+    background: top;
+    background-size: 100%;
+    background-color: #20ff2080; /**/
+    /* background-image: url(); HeroClass*/
+}
+
+.ennemis_Hand {
+    min-width: 50%;
+    opacity:40%;
+    background-color: #ff000080;
+}
+
+.ennemis_Health {
+    min-width:8.33%;
+    padding: 27px 0px;
+    background: no-repeat center;
+    background-size: 60%;
+    background-image: url(../images/UI/Health.png);
+}
+
+.ennemis_Mana {
+    min-width: 8.33%;
+    padding: 27px 0px;
+    background: no-repeat center;
+    background-size: 65%;
+    background-image: url(../images/UI/FEH_Orb.png);
+}
+
+.ennemis_Deck {
+    min-width: 8.33%;
+    padding: 27px 0px;
+    background: no-repeat center;
+    background-size: 70%;
+    background-image: url(../images/UI/Deck.png);
+}
+
+/* Ennemi Board */
+
+.ennemis_Board {
+    min-width: 100%;
+    min-height: 25vh;
+}
+
+/* *************************************************************************
+ Player //Board.php
+\* *************************************************************************/
+
+.player {
+    min-width: 100%;
+    min-height: 61vh;
+    background-color: #00ff0080;
+}
+
+/* Player Board */
+
+.player_Board {
+    min-width: 100%;
+    min-height: 30vh;
+}
+
+.player_Cards {
+    min-width: 85%;
+
+}
+
+.info_Cards {
+    min-width: 15%;
+    opacity: 80%;
+}
+
+/* Player Hand */
+
+.player_UI {
+    min-width: 100%;
+    min-height: 31vh;
+    display: flex;
+    background: no-repeat;
+    background-size: 105%;
+    background-image: url(../images/Background/Player_Background.png);
+}
+
+.player_Portrait {
+    min-width: 25%;
+    background-size: 100%;
+    background-color: #20ff2080; /**/
+    /* background-image: url(); HeroClass*/
+}
+
+.player_Hand {
+    min-width: 55%;
+
+}
+
+.player_Info {
+    min-width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+.player_Stats {
+    min-width:80%;
+    min-height: 50%;
+    font-size: 35px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.player_Health {
+    min-width: 25%;
+    min-height: 50%;
+    padding-top: 25px;
+    background: no-repeat center;
+    background-size: 100%;
+    background-image: url(../images/UI/Health.png);
+}
+
+.player_Mana {
+    min-width: 25%;
+    min-height: 50%;
+    padding-top: 25px;
+    background: no-repeat center;
+    background-size: 100%;
+    background-image: url(../images/UI/FEH_Orb.png);
+}
+
+.player_Deck {
+    min-width: 25%;
+    min-height: 50%;
+    padding-top: 25px;
+    background: no-repeat center;
+    background-size: 100%;
+    background-image: url(../images/UI/Deck.png);
+}
+
+.player_Options {
+    min-width: 100%;
+    min-height: 50%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.endTurn {
+    min-width: 40%;
+    min-height: 75%;
+    padding-top: 12px;
+    font-size: 25px;
+    text-align: center;
+    background: no-repeat;
+    background-size: 95%;
+    background-image: url(../images/Background/button_bleuF.png);
+}
+
+.player_HeroPower {
+    min-width: 40%;
+    min-height: 75%;
+    padding-top: 12px;
+    font-size: 23px;
+    text-align: center;
+    background: no-repeat;
+    background-size: 95%;
+    background-image: url(../images/Background/button_vert.png);
+}
