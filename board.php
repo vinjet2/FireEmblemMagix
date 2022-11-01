@@ -6,6 +6,8 @@
 
     require_once("partial/header.php");
 ?>
+<script src="javascript/Jeu/jeu.js"></script>
+<script src="javascript/Jeu/carte.js"></script>
 <div class="board">
     <div class="ennemis">
         <div class="ennemis_UI">

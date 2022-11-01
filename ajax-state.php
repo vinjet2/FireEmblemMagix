@@ -3,8 +3,7 @@
     require_once("action/AjaxStateAction.php");
 
     $action = new AjaxStateAction();
-    $gamestate = json_encode($action->execute());
+    $data = action->execute();
 
-    //var_dump($gamestate);
-    echo $gamestate;
+    echo json_encode($data["result"]);
 ?>
