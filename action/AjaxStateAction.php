@@ -11,7 +11,7 @@
             $result = null;
 
             $data = [];
-            $data = $_SESSION["key"];
+            $data["key"] = $_SESSION["key"];
 
             $result = parent::callAPI("games/state", $data);
 

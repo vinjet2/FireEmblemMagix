@@ -25,7 +25,7 @@
     </div>
     <div class="player">
         <div class="player_Board">
-
+            <div class="player_Cards"></div>
         </div>
         <div class="player_UI">
             <div class="player_Portrait"></div>
