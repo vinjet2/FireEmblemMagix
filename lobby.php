@@ -13,12 +13,12 @@
         	src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>/large">
 		</iframe> -->
 
-		<iframe style="width:700px;height:240px;" onload="applyStyles(this)"
+		<iframe id="chat" style="width:700px;height:240px;" onload="applyStyles(this)"
 			src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>">
 		</iframe>
 	</div>
 	<div class="deck">
-		<iframe style="width:650px;height:500px;" src="https://magix.apps-de-cours.com/server/#/deck/<?= $_SESSION["key"] ?>">
+		<iframe id="deck" style="width:100vh;height:100vh;display:none" src="https://magix.apps-de-cours.com/server/#/deck/<?= $_SESSION["key"] ?>">
 		</iframe>
 	</div>
 	<div class="menu">
@@ -38,7 +38,23 @@
 		</div>
 		<div class="space"></div>
 		<div class="button-banner">
-			<a class="button-text" href="deck.php">Deck</a>
+			<a class="button-text" onclick="active()">Deck</a>
+			<script>
+				function active() {
+					let activate;
+					if (document.getElementById("deck").style.display == "block" ){
+						activate = true;
+					}
+					if (!activate){
+						document.getElementById("deck").style.display="none";
+						activate = true;
+					}
+					else {
+						document.getElementById("deck").style.dispay="block";
+						activate = false;
+					}
+				}
+			</script>
 		</div>
 		<div class="space"></div>
 		<div class="button-banner">

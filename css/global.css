@@ -125,6 +125,9 @@ button { /* Tous les buttons*/
 
 .board {
     min-height: 100vh;
+    font-weight: bold;
+    /*display: flex;
+    flex-direction: column;*/
     background: no-repeat center fixed;
     background-size: cover;
     background-image: url(../images/Background/Board_Background1.png);
@@ -135,15 +138,20 @@ button { /* Tous les buttons*/
 \* *************************************************************************/
 
 .ennemis {
-    min-height: 39vh;
     min-width: 100%;
-    background-color: #00000080;
+    min-height: 38vh;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .ennemis_UI {
     min-width:100%;
     min-height: 7vh;
     display:flex;
+    /*flex-direction: row;*/
     background: bottom;
     background-size: 100%;
     background-image: url(../images/Background/Ennemis_background.png);
@@ -153,14 +161,24 @@ button { /* Tous les buttons*/
     min-width: 25%;
     background: top;
     background-size: 100%;
-    background-color: #20ff2080; /**/
-    /* background-image: url(); HeroClass*/
+    background-image: url(../images/HeroClass/Priest.png);
 }
 
 .ennemis_Hand {
     min-width: 50%;
-    opacity:40%;
-    background-color: #ff000080;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.ennemis_card {
+    min-width: 80px;
+    min-height: 40px;
+    background: no-repeat center;
+    background-size: 70%;
+    background-image: url(../images/UI/Deck.png);
+    
 }
 
 .ennemis_Health {
@@ -192,6 +210,21 @@ button { /* Tous les buttons*/
 .ennemis_Board {
     min-width: 100%;
     min-height: 25vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.ennemis_Cards {
+    min-width: 90%;
+    min-height: 25vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.timer {
+    min-width: 10%;
+    min-height: 25%;
 }
 
 /* *************************************************************************
@@ -201,7 +234,8 @@ button { /* Tous les buttons*/
 .player {
     min-width: 100%;
     min-height: 61vh;
-    background-color: #00ff0080;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 /* Player Board */
@@ -209,43 +243,55 @@ button { /* Tous les buttons*/
 .player_Board {
     min-width: 100%;
     min-height: 30vh;
+    display: flex;
+    flex-direction: row;
 }
 
 .player_Cards {
     min-width: 85%;
-
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .info_Cards {
     min-width: 15%;
     opacity: 80%;
+    background-color: rgba(00, 00, 00, 50);
 }
 
 /* Player Hand */
 
 .player_UI {
     min-width: 100%;
-    min-height: 31vh;
+    min-height: 25vh;
     display: flex;
+    flex-direction: row;
     background: no-repeat;
-    background-size: 105%;
+    background-size: 120%;
     background-image: url(../images/Background/Player_Background.png);
 }
 
 .player_Portrait {
     min-width: 25%;
+    max-height: 25vh;
+    background: top no-repeat;
     background-size: 100%;
-    background-color: #20ff2080; /**/
-    /* background-image: url(); HeroClass*/
+    background-image: url(../images/HeroClass/Priest.png);
 }
 
 .player_Hand {
     min-width: 55%;
-
+    max-height: 25vh;
+    /*min-height: ;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .player_Info {
     min-width: 20%;
+    max-height: 25vh;
     display: flex;
     flex-direction: column;
 }
@@ -254,6 +300,7 @@ button { /* Tous les buttons*/
     min-width:80%;
     min-height: 50%;
     font-size: 35px;
+    font-weight: bold;
     display: flex;
     justify-content: space-around;
 }
@@ -262,6 +309,7 @@ button { /* Tous les buttons*/
     min-width: 25%;
     min-height: 50%;
     padding-top: 25px;
+    text-align: center;
     background: no-repeat center;
     background-size: 100%;
     background-image: url(../images/UI/Health.png);
@@ -271,6 +319,7 @@ button { /* Tous les buttons*/
     min-width: 25%;
     min-height: 50%;
     padding-top: 25px;
+    text-align: center;
     background: no-repeat center;
     background-size: 100%;
     background-image: url(../images/UI/FEH_Orb.png);
@@ -280,6 +329,7 @@ button { /* Tous les buttons*/
     min-width: 25%;
     min-height: 50%;
     padding-top: 25px;
+    text-align: center;
     background: no-repeat center;
     background-size: 100%;
     background-image: url(../images/UI/Deck.png);
@@ -312,4 +362,151 @@ button { /* Tous les buttons*/
     background: no-repeat;
     background-size: 95%;
     background-image: url(../images/Background/button_vert.png);
+}
+
+.carte {
+    margin-top: 2%;
+    border: 3px solid black;
+    text-align: left;
+    background: no-repeat top center;
+    background-color: burlywood;
+    background-size:90%;
+    background-image: url(../images/Cartes/Byleth_Male_Neutral.png);
+    min-width: 13%;
+    margin-left: 2%;
+    margin-right: 0.50%;
+}
+
+.H {
+    min-width: 13%;
+    margin-left: 2%;
+    margin-right: 0.50%;
+}
+
+.B {
+    min-width: 14%;
+    margin-left: 3%;
+    margin-right: 0.5%;
+    background-image: url(../images/Cartes/Byleth_Male_Attack.png);
+}
+
+.E {
+    min-width: 10%;
+    min-height: 150px;
+    /*margin-left: 3%;*/
+    margin-right: 0.5%;
+    background-image: url(../images/Cartes/Wolt_Attack.png);
+}
+
+.carte_Stats {
+    min-width: 100%;
+    min-height: 10%; /* 5% */
+    display: flex;
+    flex-direction: row;
+}
+
+.Bstats{
+    min-height: 20%;
+}
+
+.Estats{
+    min-height: 20%;
+}
+
+.carte_Cost {
+    min-width: 50%;
+    min-height: 110%;
+    margin-left: 1px;
+    padding-left: 8px; /* 9px */
+    text-align: left;
+    font-size: 25px; /* 30px */
+    background: no-repeat;
+    background-size:50%; /* 40% */
+    background-image: url(../images/UI/FEH_Orb.png);
+}
+
+.Bcost {
+    padding-left:12px;
+    padding-top: 2px;
+    font-size: 30px;
+    background-size: 45%;
+}
+
+.carte_Effect {
+    min-width: 50%;
+    min-height: 100%;
+    background: no-repeat right;
+    background-size:60%;
+    background-image: url(../images/Effects/Taunt.png);
+}
+
+.Beffect {
+    background-size: 50%;
+}
+
+.carte_Portrait {
+    min-width: 100%;
+    min-height: 35%; /* 30% */
+    background: no-repeat center;
+    background-size:100%;
+    /*background-image: url(../images/Cartes/Alm.png);*/
+}
+
+.Bportrait {
+    min-height: 27%;
+}
+
+.carte_Mecanique {
+    min-width: 100%;
+    width: 100px;
+    min-height: 25%;
+    font-size: 80%;
+    word-wrap: normal;
+}
+
+.carte_Stats1 {
+    min-width: 100%;
+    min-height: 25%;
+    text-align: center;
+    font-size: 30px; /* 35px */
+    /* font: bolder; */
+    /* color: white; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.Bstats1 {
+    font-size: 35px;
+}
+
+.carte_Attaque {
+    min-width: 40%;
+    min-height: 100%;
+    padding: 3px 0; /* 15px */
+    text-align: center;
+    background: no-repeat center;
+    background-size:100%; /* 90% */
+    background-image: url(../images/UI/Attack.png);
+}
+
+.Battaque {
+    padding: 15px 0;
+    background-size: 90%;
+}
+
+.carte_Vie {
+    min-width: 40%;
+    min-height: 100%;
+    padding: 3px 0; /* 15px */
+    text-align: center;
+    background: no-repeat center;
+    background-size:100%; /* 95% */
+    background-image: url(../images/UI/Health.png);
+}
+
+.Bvie {
+    padding: 15px 0;
+    background-size: 95%;
 }
