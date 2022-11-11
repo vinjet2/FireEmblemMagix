@@ -15,10 +15,10 @@ const state = () => {
 
             }
             else if (data === "LAST_GAME_WON") {
-
+                setInterval(window.location.href="lobby.php", 5000);
             }
             else if (data === "LAST_GAME_LOST") {
-
+                setInterval(window.location.href="lobby.php" ,5000);
             }
             else {
                 afficherJeu(data);
@@ -26,6 +26,8 @@ const state = () => {
             setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
         })
 }
+
+
 
 window.addEventListener("load", () => {
     setTimeout(state, 1000); // Appel initial (attendre 1 seconde)
@@ -79,9 +81,9 @@ function afficherJeu(data) {
         playerPower.style.opacity = "100%";
 
     // Cartes en Main
-    playerHand.childNodes.forEach(element => {
-        element.remove();
-    });
+    while(playerHand.firstChild){
+        playerHand.removeChild(playerHand.firstChild);
+    }
 
     data.hand.forEach(card => {
         let div = carte(card.id, false, false);
@@ -93,7 +95,7 @@ function afficherJeu(data) {
         const carteVie = div.querySelector(".carte_Vie");
         carteCost.innerHTML = card.cost;
         //carteEffect.style.backgroundImage = "url(images/Effects/"+carte.mechanics+".png)";
-        //cartePortrait.style.backgroundImage = "url(images/Cartes/"+carteInfo[carte.id][0]+".png)";
+        div.style.backgroundImage = "url(images/Cartes/"+carteInfo[card.id][0]+"_Neutral.png)";
         carteMecanique.innerHTML = card.mechanics;
         carteAttaque.innerHTML = card.atk;
         carteVie.innerHTML = card.hp;
@@ -101,9 +103,9 @@ function afficherJeu(data) {
     });
 
     // Cartes sur le Board
-    playerCards.childNodes.forEach(element => {
-        element.remove();
-    });
+    while(playerCards.firstChild){
+        playerCards.removeChild(playerCards.firstChild);
+    }
 
     data.board.forEach(card => {
         let div = carte(card.id, true, false);
@@ -123,13 +125,13 @@ function afficherJeu(data) {
     });
 
     //Cartes dans EnnemiHand
-    ennemiHand.childNodes.forEach(element => {
-        element.remove();
-    });
+    while(ennemiHand.firstChild){
+        ennemiHand.removeChild(ennemiHand.firstChild);
+    }
 
     for (let i = 0; i < data.opponent.handSize; i++) {
         let div = document.createElement("div");
-        carte.className = "ennemis_card";
+        div.className = "ennemis_card";
         ennemiHand.append(div);
     }
 
@@ -137,6 +139,10 @@ function afficherJeu(data) {
     ennemiCards.childNodes.forEach(element => {
         element.remove();
     });
+
+    while(ennemiCards.firstChild){
+        ennemiCards.removeChild(ennemiCards.firstChild);
+    }
 
     data.opponent.board.forEach(card => {
         let div = carte(card.id, false, true);
@@ -148,7 +154,7 @@ function afficherJeu(data) {
         const carteVie = div.querySelector(".carte_Vie");
         carteCost.innerHTML = card.cost;
         //carteEffect.style.backgroundImage = "url(images/Effects/"+carte.mechanics+".png)";
-        //cartePortrait.style.backgroundImage = "url(images/Cartes/"+carteInfo[carte.id][0]+".png)";
+        // cartePortrait.style.backgroundImage = "url(images/Cartes/"+carteInfo[data.hand.id][0]+".png)";
         carteMecanique.innerHTML = card.mechanics;
         carteAttaque.innerHTML = card.atk;
         carteVie.innerHTML = card.hp;
@@ -189,45 +195,45 @@ function action(type, id, targetid) {
 }
 
 function carte(id, board, ennemi) {
-    var carte = document.createElement("div"); // Carte
+    let carte = document.createElement("div"); // Carte
     carte.className = "carte";
     if (board == true) { carte.classList.add("B") }
     if (ennemi == true) { carte.classList.add("E") }
     carte.setAttribute("id", id);
-    var stats = document.createElement("div"); // stats
+    let stats = document.createElement("div"); // stats
     stats.className = "carte_Stats";
     if (board == true) { stats.classList.add("Bstats") }
     if (ennemi == true) { stats.classList.add("Estats") }
     carte.append(stats);
-    var cost = document.createElement("div"); // cost
+    let cost = document.createElement("div"); // cost
     cost.className = "carte_Cost";
     if (board == true) { cost.classList.add("Bcost") }
     if (ennemi == true) { cost.classList.add("Ecost") }
     stats.append(cost);
-    var effect = document.createElement("div"); // effect
+    let effect = document.createElement("div"); // effect
     effect.className = "carte_Effect";
     if (board == true) { effect.classList.add("Beffect") }
     if (ennemi == true) { effect.classList.add("Eeffect") }
     stats.append(effect);
-    var portrait = document.createElement("div"); // portrait
+    let portrait = document.createElement("div"); // portrait
     portrait.className = "carte_Portrait";
     if (board == true) { portrait.classList.add("Bportrait") }
     if (ennemi == true) { portrait.classList.add("Eportrait") }
     carte.append(portrait);
-    var mecanique = document.createElement("div"); // mecanique
+    let mecanique = document.createElement("div"); // mecanique
     mecanique.className = "carte_Mecanique";
     carte.append(mecanique);
-    var stats1 = document.createElement("div"); // stats1
+    let stats1 = document.createElement("div"); // stats1
     stats1.className = "carte_Stats1";
     if (board == true) { stats1.classList.add("Bstats1") }
     if (ennemi == true) { stats1.classList.add("Estats1") }
     carte.append(stats1);
-    var attaque = document.createElement("div"); // attaque
+    let attaque = document.createElement("div"); // attaque
     attaque.className = "carte_Attaque";
     if (board == true) { attaque.classList.add("Battaque") }
     if (ennemi == true) { attaque.classList.add("Eattaque") }
     stats1.append(attaque);
-    var vie = document.createElement("div"); // vie
+    let vie = document.createElement("div"); // vie
     vie.className = "carte_Vie";
     if (board == true) { vie.classList.add("Bvie") }
     if (ennemi == true) { vie.classList.add("Evie") }
@@ -235,7 +241,7 @@ function carte(id, board, ennemi) {
     return carte;
 }
 
-var carteInfo = [
+const carteInfo = [
     ["Kiran", ""], //New Units
     ["Fjorm", ""],
     ["Silas", "Taunt"],

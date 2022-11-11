@@ -215,6 +215,7 @@ button { /* Tous les buttons*/
 }
 
 .surrender {
+    cursor: pointer;
     min-width: 10%;
     min-height: 25%;
     padding-top: 20px;
@@ -382,7 +383,7 @@ button { /* Tous les buttons*/
     background: no-repeat top center;
     background-color: burlywood;
     background-size:90%;
-    background-image: url(../images/Cartes/Byleth_Male_Neutral.png);
+    /* background-image: url(../images/Cartes/Byleth_Male_Neutral.png); */
     min-width: 13%;
     margin-left: 2%;
     margin-right: 0.50%;
