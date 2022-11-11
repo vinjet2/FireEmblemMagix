@@ -8,9 +8,11 @@
         }
 
         protected function executeAction() {
+            $key = [];
+			$key = $_SESSION["key"];
             $result = null;
 
             
-            return [];
+            return compact("key");
         }
     }

@@ -214,8 +214,19 @@ button { /* Tous les buttons*/
     flex-direction: row;
 }
 
+.surrender {
+    min-width: 10%;
+    min-height: 25%;
+    padding-top: 20px;
+    font-size: 23px;
+    text-align: center;
+    background: no-repeat;
+    background-size: 95%;
+    background-image: url(../images/Background/button_vert.png);
+}
+
 .ennemis_Cards {
-    min-width: 90%;
+    min-width: 80%;
     min-height: 25vh;
     display: flex;
     flex-direction: row;

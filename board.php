@@ -7,7 +7,7 @@
     require_once("partial/header.php");
 ?>
 <script src="javascript/Jeu/jeu.js"></script>
-<script src="javascript/Jeu/carte.js"></script>
+<script src="javascript/Jeu/Carte.js"></script>
 <div class="board">
     <div class="ennemis">
         <div class="ennemis_UI">
@@ -21,6 +21,7 @@
         </div>
         <div class="ennemis_Board">
             <div class="chat"></div>
+            <div class="surrender" onclick="action('SURRENDER')">Surrender</div>
             <div class="ennemis_Cards">
                 <!--<div class="carte E">
                     <div class="carte_Stats Estats">
@@ -90,8 +91,8 @@
                     <div class="player_Deck">30</div>
                 </div>
                 <div class="player_Options">
-                    <div class="endTurn">End Turn</div>
-                    <div class="player_HeroPower">Hero Power</div>
+                    <div class="endTurn" onclick="action('END_TURN')">End Turn</div>
+                    <div class="player_HeroPower" onclick="action('HERO_POWER')">Hero Power</div>
                 </div>
             </div>
         </div>
