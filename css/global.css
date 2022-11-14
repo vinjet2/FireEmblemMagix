@@ -173,8 +173,8 @@ button { /* Tous les buttons*/
 }
 
 .ennemis_card {
-    min-width: 80px;
-    min-height: 40px;
+    min-width: 70px;
+    min-height: 30px;
     background: no-repeat center;
     background-size: 70%;
     background-image: url(../images/UI/Deck.png);
@@ -376,6 +376,10 @@ button { /* Tous les buttons*/
     background-image: url(../images/Background/button_vert.png);
 }
 
+/* *************************************************************************
+ Carte //Board.php
+\* *************************************************************************/
+
 .carte {
     margin-top: 2%;
     border: 3px solid black;
@@ -386,6 +390,7 @@ button { /* Tous les buttons*/
     min-width: 13%;
     margin-left: 2%;
     margin-right: 0.50%;
+    font-size: 3vh;
 }
 
 .selectedcarte {

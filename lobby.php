@@ -55,7 +55,7 @@
 		</div>
 		<div class="space"></div>
 		<div class="button-banner">
-			<a class="button-text" href="notes.php">Notes</a>
+			<a class="button-text" href="javascript:void(0)">Stats</a>
 		</div>
 		<div class="space"></div>
 		<div class="button-banner">

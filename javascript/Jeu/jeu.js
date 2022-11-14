@@ -109,7 +109,6 @@ function afficherJeu(data) {
 
     data.board.forEach(card => {
         let div = carte(card.id, true, false);
-        div.onclick = function(){selectedCardUID = card.uid;div.className="selectedcarte";}
         const carteCost = div.querySelector(".carte_Cost");
         const carteEffect = div.querySelector(".carte_Effect");
         const cartePortrait = div.querySelector(".carte_Portrait");
@@ -122,6 +121,7 @@ function afficherJeu(data) {
         carteMecanique.innerHTML = card.mechanics;
         carteAttaque.innerHTML = card.atk;
         carteVie.innerHTML = card.hp;
+        div.onclick = function(){selectedCardUID = card.uid;div.className="selectedcarte";}
         playerCards.append(div);
     });
 
@@ -143,6 +143,7 @@ function afficherJeu(data) {
 
     data.opponent.board.forEach(card => {
         let div = carte(card.id, false, true);
+        div.onclick = function() { if(selectedCardUID != null){ action('ATTACK',selectedCardUID,card.uid);}}
         const carteCost = div.querySelector(".carte_Cost");
         const carteEffect = div.querySelector(".carte_Effect");
         const cartePortrait = div.querySelector(".carte_Portrait");
