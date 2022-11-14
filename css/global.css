@@ -140,7 +140,7 @@ button { /* Tous les buttons*/
 .ennemis {
     min-width: 100%;
     min-height: 38vh;
-    font-size: 35px;
+    font-size: 5vh;
     font-weight: bold;
     text-align: center;
     display: flex;
@@ -219,7 +219,7 @@ button { /* Tous les buttons*/
     min-width: 10%;
     min-height: 25%;
     padding-top: 20px;
-    font-size: 23px;
+    font-size: 3vh;
     text-align: center;
     background: no-repeat;
     background-size: 95%;
@@ -383,10 +383,13 @@ button { /* Tous les buttons*/
     background: no-repeat top center;
     background-color: burlywood;
     background-size:90%;
-    /* background-image: url(../images/Cartes/Byleth_Male_Neutral.png); */
     min-width: 13%;
     margin-left: 2%;
     margin-right: 0.50%;
+}
+
+.selectedcarte {
+    border: 5px solid rgb(10,75,10);
 }
 
 .H {
@@ -472,7 +475,7 @@ button { /* Tous les buttons*/
     min-width: 100%;
     width: 100px;
     min-height: 25%;
-    font-size: 80%;
+    font-size: 2vh;
     word-wrap: normal;
 }
 

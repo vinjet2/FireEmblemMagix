@@ -38,20 +38,17 @@
 		</div>
 		<div class="space"></div>
 		<div class="button-banner">
-			<a class="button-text" onclick="active()">Deck</a>
+			<a class="button-text" href="javascript:void(0)" onclick="showDeck()">Deck</a>
 			<script>
-				function active() {
-					let activate;
-					if (document.getElementById("deck").style.display == "block" ){
-						activate = true;
-					}
+				let activate = false;
+				function showDeck() {
+					activate = !activate
+					console.log("showDeck");
 					if (!activate){
 						document.getElementById("deck").style.display="none";
-						activate = true;
 					}
 					else {
-						document.getElementById("deck").style.dispay="block";
-						activate = false;
+						document.getElementById("deck").style.display="block";
 					}
 				}
 			</script>
