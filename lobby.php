@@ -6,19 +6,19 @@
 
     require_once("partial/header.php");
 ?>
-<script src="javascript/Jeu/lobby.js"></script>
+<script src="javascript/Jeu/chat_Style.js"></script>
 <div class="lobby">
 	<div class="clavardage">
 		<!-- <iframe style="width:700px;height:562px;" 
         	src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>/large">
 		</iframe> -->
 
-		<iframe id="chat" style="width:700px;height:240px;" onload="applyStyles(this)"
+		<iframe id="chat" style="width:695px;height:240px;position:relative;z-index:-1" onload="applyStyles(this)"
 			src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>">
 		</iframe>
 	</div>
 	<div class="deck">
-		<iframe id="deck" style="width:100vh;height:100vh;display:none" src="https://magix.apps-de-cours.com/server/#/deck/<?= $_SESSION["key"] ?>">
+		<iframe id="deck" style="width:110vh;height:100vh;display:none;position:relative;z-index:+1" src="https://magix.apps-de-cours.com/server/#/deck/<?= $_SESSION["key"] ?>">
 		</iframe>
 	</div>
 	<div class="menu">

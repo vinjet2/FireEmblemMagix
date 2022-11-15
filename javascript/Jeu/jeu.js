@@ -15,12 +15,12 @@ const state = () => {
 
             }
             else if (data === "LAST_GAME_WON") {
-                console.log("Game Won");
-                setInterval(window.location.href="lobby.php", 5000);
+                //console.log("Game Won");
+                //setInterval(window.location.href="lobby.php", 5000);
             }
             else if (data === "LAST_GAME_LOST") {
-                console.log("Game Lost");
-                setInterval(window.location.href="lobby.php" ,5000);
+                //console.log("Game Lost");
+                //setInterval(window.location.href="lobby.php" ,5000);
             }
             else {
                 afficherJeu(data);
@@ -86,7 +86,9 @@ function afficherJeu(data) {
 
     data.hand.forEach(card => {
         let div = carte(card.id, false, false);
+        const name = carteInfo[card.id][0];
         div.onclick = function(){action('PLAY',card.uid);}
+        div.onmouseover = function(){descCarte(name, card.mechanics);}
         const carteCost = div.querySelector(".carte_Cost");
         const carteEffect = div.querySelector(".carte_Effect");
         const cartePortrait = div.querySelector(".carte_Portrait");
@@ -95,7 +97,7 @@ function afficherJeu(data) {
         const carteVie = div.querySelector(".carte_Vie");
         carteCost.innerHTML = card.cost;
         //carteEffect.style.backgroundImage = "url(images/Effects/"+carte.mechanics+".png)";
-        div.style.backgroundImage = "url(images/Cartes/"+carteInfo[card.id][0]+"_Neutral.png)";
+        div.style.backgroundImage = "url(images/Cartes/"+name+"_Neutral.png)";
         carteMecanique.innerHTML = card.mechanics;
         carteAttaque.innerHTML = card.atk;
         carteVie.innerHTML = card.hp;
@@ -109,19 +111,27 @@ function afficherJeu(data) {
 
     data.board.forEach(card => {
         let div = carte(card.id, true, false);
+        div.onclick = function(){selectedCardUID = card.uid;} // si la carte n'est pas asleep
+        const name = carteInfo[card.id][0];
         const carteCost = div.querySelector(".carte_Cost");
         const carteEffect = div.querySelector(".carte_Effect");
         const cartePortrait = div.querySelector(".carte_Portrait");
         const carteMecanique = div.querySelector(".carte_Mecanique");
         const carteAttaque = div.querySelector(".carte_Attaque");
         const carteVie = div.querySelector(".carte_Vie");
-        carteCost.innerHTML = card.cost;
+        if (selectedCardUID == card.uid){
+            div.style.border = "3px solid rgb(10,75,10)";
+            div.style.backgroundImage = "url(images/Cartes/"+name+"_Special.png)";
+        }
+        else {
+            div.style.border = "3px solid black";
+            div.style.backgroundImage = "url(images/Cartes/"+name+"_Attack.png)";
+        }
         //carteEffect.style.backgroundImage = "url(images/Effects/"+carte.mechanics+".png)";
-        div.style.backgroundImage = "url(images/Cartes/"+carteInfo[card.id][0]+"_Attack.png)";
+        carteCost.innerHTML = card.cost;
         carteMecanique.innerHTML = card.mechanics;
         carteAttaque.innerHTML = card.atk;
         carteVie.innerHTML = card.hp;
-        div.onclick = function(){selectedCardUID = card.uid;div.className="selectedcarte";}
         playerCards.append(div);
     });
 
@@ -143,6 +153,7 @@ function afficherJeu(data) {
 
     data.opponent.board.forEach(card => {
         let div = carte(card.id, false, true);
+        const name = carteInfo[card.id][0];
         div.onclick = function() { if(selectedCardUID != null){ action('ATTACK',selectedCardUID,card.uid);}}
         const carteCost = div.querySelector(".carte_Cost");
         const carteEffect = div.querySelector(".carte_Effect");
@@ -152,12 +163,21 @@ function afficherJeu(data) {
         const carteVie = div.querySelector(".carte_Vie");
         carteCost.innerHTML = card.cost;
         //carteEffect.style.backgroundImage = "url(images/Effects/"+carte.mechanics+".png)";
-        div.style.backgroundImage = "url(images/Cartes/"+carteInfo[card.id][0]+"_Attack.png)";
+        div.style.backgroundImage = "url(images/Cartes/"+name+"_Attack.png)";
         carteMecanique.innerHTML = card.mechanics;
         carteAttaque.innerHTML = card.atk;
         carteVie.innerHTML = card.hp;
         ennemiCards.append(div);
     });
+}
+
+function descCarte(name, mechanics) {
+    var portrait = document.querySelector("description_portrait");
+    portrait.style.backgroundImage = "url(images/Cartes/"+name+".png)";
+    var nom = document.querySelector("description_nom");
+    nom.innerHTML = name;
+    var mecanique = document.querySelector("description_mechanique");
+    mecanique.innerHTML = mechanics;
 }
 
 function action(type, id, targetid) {
@@ -259,3 +279,5 @@ function action(type, id, targetid) {
 "remainingCardsCount":26,
 "welcomeText":"Agility is the key"},
 "latestActions":[]}*/
+
+//"latestActions":[{"id":31,"from":"Hit-AI","action":{"type":"ATTACK","uid":34,"targetuid":null}},{"id":32,"from":"Hit-AI","action":{"type":"HERO_POWER"}},{"id":33,"from":"Hit-AI","action":{"type":"END_TURN"}}]}

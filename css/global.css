@@ -205,7 +205,9 @@ button { /* Tous les buttons*/
     background-image: url(../images/UI/Deck.png);
 }
 
-/* Ennemi Board */
+/* *************************************************************************
+ Ennemi Board //Board.php
+\* *************************************************************************/
 
 .ennemis_Board {
     min-width: 100%;
@@ -214,20 +216,44 @@ button { /* Tous les buttons*/
     flex-direction: row;
 }
 
-.surrender {
-    cursor: pointer;
-    min-width: 10%;
-    min-height: 25%;
-    padding-top: 20px;
-    font-size: 3vh;
+.info_log {
+    min-width: 20vh;
+    min-height:25vh;
+    background-color:rgb(30,75,30);
+}
+
+.description {
+    min-width:20vh;
+    min-height:25vh;
+    background-color: burlywood;
+}
+
+.description_portrait {
+    background: no-repeat center;
+    background-size:100%;
+    min-width:20vh;
+    min-height:10vh;
+    background-color: rgb(75,30,30);
+}
+
+.description_mechanique {
     text-align: center;
-    background: no-repeat;
-    background-size: 95%;
-    background-image: url(../images/Background/button_vert.png);
+    font-size: 3vh;
+    min-width:20vh;
+    min-height:10vh;
+    background-color: rgb(30,75,30);
+}
+
+.description_nom {
+    text-align: center;
+    font-size: 3vh;
+    min-width:20vh;
+    min-height:10vh;
+    background-color: rgb(30,30,75);
 }
 
 .ennemis_Cards {
-    min-width: 80%;
+    min-width: 60vh;
     min-height: 25vh;
     display: flex;
     flex-direction: row;
@@ -235,12 +261,14 @@ button { /* Tous les buttons*/
 }
 
 .timer {
+    text-align: center;
+    font-size: 5vh;
     min-width: 10%;
     min-height: 25%;
 }
 
 /* *************************************************************************
- Player //Board.php
+Player //Board.php
 \* *************************************************************************/
 
 .player {
@@ -254,9 +282,51 @@ button { /* Tous les buttons*/
 
 .player_Board {
     min-width: 100%;
-    min-height: 30vh;
+    min-height: 28vh;
     display: flex;
     flex-direction: row;
+}
+
+.options_Board {
+    display:flex;
+    flex-direction: column;
+}
+
+.surrender {
+    cursor: pointer;
+    min-width: 10%;
+    min-height: 25%;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 3vh;
+    text-align: center;
+    background: no-repeat;
+    background-size: 95%;
+    background-image: url(../images/Background/button_vert.png);
+}
+
+.button_chat {
+    cursor: pointer;
+    min-width: 10%;
+    min-height: 25%;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 3vh;
+    background: no-repeat;
+    background-size: 95%;
+    background-image: url(../images/Background/button_vert.png);
+}
+
+.log {
+    cursor: pointer;
+    min-width: 10%;
+    min-height: 25%;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 3vh;
+    background: no-repeat;
+    background-size: 95%;
+    background-image: url(../images/Background/button_vert.png);
 }
 
 .player_Cards {
@@ -311,7 +381,7 @@ button { /* Tous les buttons*/
 .player_Stats {
     min-width:80%;
     min-height: 50%;
-    font-size: 35px;
+    font-size: 5vh;
     font-weight: bold;
     display: flex;
     justify-content: space-around;
@@ -358,7 +428,7 @@ button { /* Tous les buttons*/
     min-width: 40%;
     min-height: 75%;
     padding-top: 12px;
-    font-size: 25px;
+    font-size: 3.2vh;
     text-align: center;
     background: no-repeat;
     background-size: 95%;
@@ -369,7 +439,7 @@ button { /* Tous les buttons*/
     min-width: 40%;
     min-height: 75%;
     padding-top: 12px;
-    font-size: 23px;
+    font-size: 3.2vh;
     text-align: center;
     background: no-repeat;
     background-size: 95%;
@@ -385,16 +455,12 @@ button { /* Tous les buttons*/
     border: 3px solid black;
     text-align: left;
     background: no-repeat top center;
-    background-color: burlywood;
-    background-size:90%;
-    min-width: 13%;
+    /*background-color: burlywood;*/
+    background-size:15vh;
+    min-width: 13vh;
     margin-left: 2%;
     margin-right: 0.50%;
     font-size: 3vh;
-}
-
-.selectedcarte {
-    border: 5px solid rgb(10,75,10);
 }
 
 .H {
@@ -404,9 +470,7 @@ button { /* Tous les buttons*/
 }
 
 .B {
-    min-width: 14%;
-    margin-left: 3%;
-    margin-right: 0.5%;
+    min-width: 13%;
     background-image: url(../images/Cartes/Byleth_Male_Attack.png);
 }
 
