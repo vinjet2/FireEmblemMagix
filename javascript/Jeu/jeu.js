@@ -40,6 +40,7 @@ function afficherJeu(data) {
     timer.innerHTML = data.remainingTurnTime;
 
     /* Ennemis */
+    const ennemi = document.querySelector(".ennemis_UI");
     const ennemiPortrait = document.querySelector(".ennemis_Portrait");
     const ennemiHand = document.querySelector(".ennemis_Hand");
     const ennemiHealth = document.querySelector(".ennemis_Health");
@@ -79,6 +80,8 @@ function afficherJeu(data) {
     else
         playerPower.style.opacity = "100%";
 
+    ennemi.onclick = function() { if(selectedCardUID != null){ action('ATTACK',selectedCardUID,0);}}
+
     // Cartes en Main
     while(playerHand.firstChild){
         playerHand.removeChild(playerHand.firstChild);
@@ -88,13 +91,19 @@ function afficherJeu(data) {
         let div = carte(card.id, false, false);
         const name = carteInfo[card.id][0];
         div.onclick = function(){action('PLAY',card.uid);}
-        div.onmouseover = function(){descCarte(name, card.mechanics);}
+        div.addEventListener('mouseover', (event) => {
+            event.currentTarget.style.transform = ("translate(0,-10%)");
+            descCarte(name,card.mechanics);
+        })
         const carteCost = div.querySelector(".carte_Cost");
         const carteEffect = div.querySelector(".carte_Effect");
         const cartePortrait = div.querySelector(".carte_Portrait");
         const carteMecanique = div.querySelector(".carte_Mecanique");
         const carteAttaque = div.querySelector(".carte_Attaque");
         const carteVie = div.querySelector(".carte_Vie");
+        if (card.cost <= data.mp && yourTurn){
+            div.style.border = "4px solid rgb(10,75,10)";
+        }
         carteCost.innerHTML = card.cost;
         //carteEffect.style.backgroundImage = "url(images/Effects/"+carte.mechanics+".png)";
         div.style.backgroundImage = "url(images/Cartes/"+name+"_Neutral.png)";
@@ -111,8 +120,12 @@ function afficherJeu(data) {
 
     data.board.forEach(card => {
         let div = carte(card.id, true, false);
-        div.onclick = function(){selectedCardUID = card.uid;} // si la carte n'est pas asleep
         const name = carteInfo[card.id][0];
+        div.onclick = function(){if (card.state != "SLEEP"){selectedCardUID = card.uid;}} // si la carte n'est pas asleep
+        div.addEventListener('mouseover', (event) => {
+            event.currentTarget.style.transform = ("translate(0,-10%)");
+            descCarte(name,card.mechanics);
+        })
         const carteCost = div.querySelector(".carte_Cost");
         const carteEffect = div.querySelector(".carte_Effect");
         const cartePortrait = div.querySelector(".carte_Portrait");
@@ -120,11 +133,11 @@ function afficherJeu(data) {
         const carteAttaque = div.querySelector(".carte_Attaque");
         const carteVie = div.querySelector(".carte_Vie");
         if (selectedCardUID == card.uid){
-            div.style.border = "3px solid rgb(10,75,10)";
+            div.style.border = "4px solid rgb(10,75,10)";
             div.style.backgroundImage = "url(images/Cartes/"+name+"_Special.png)";
         }
         else {
-            div.style.border = "3px solid black";
+            div.style.border = "4px solid black";
             div.style.backgroundImage = "url(images/Cartes/"+name+"_Attack.png)";
         }
         //carteEffect.style.backgroundImage = "url(images/Effects/"+carte.mechanics+".png)";
@@ -155,6 +168,9 @@ function afficherJeu(data) {
         let div = carte(card.id, false, true);
         const name = carteInfo[card.id][0];
         div.onclick = function() { if(selectedCardUID != null){ action('ATTACK',selectedCardUID,card.uid);}}
+        div.addEventListener('mouseover', (event) => {
+            descCarte(name,card.mechanics);
+        })
         const carteCost = div.querySelector(".carte_Cost");
         const carteEffect = div.querySelector(".carte_Effect");
         const cartePortrait = div.querySelector(".carte_Portrait");
@@ -172,11 +188,11 @@ function afficherJeu(data) {
 }
 
 function descCarte(name, mechanics) {
-    var portrait = document.querySelector("description_portrait");
+    var portrait = document.querySelector(".description_portrait");
     portrait.style.backgroundImage = "url(images/Cartes/"+name+".png)";
-    var nom = document.querySelector("description_nom");
+    var nom = document.querySelector(".description_nom");
     nom.innerHTML = name;
-    var mecanique = document.querySelector("description_mechanique");
+    var mecanique = document.querySelector(".description_mechanique");
     mecanique.innerHTML = mechanics;
 }
 

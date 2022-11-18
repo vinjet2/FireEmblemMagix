@@ -223,7 +223,7 @@ button { /* Tous les buttons*/
 }
 
 .description {
-    min-width:20vh;
+    max-width:20vh;
     min-height:25vh;
     background-color: burlywood;
 }
@@ -238,7 +238,7 @@ button { /* Tous les buttons*/
 
 .description_mechanique {
     text-align: center;
-    font-size: 3vh;
+    font-size: 2vh;
     min-width:20vh;
     min-height:10vh;
     background-color: rgb(30,75,30);
@@ -253,7 +253,7 @@ button { /* Tous les buttons*/
 }
 
 .ennemis_Cards {
-    min-width: 60vh;
+    min-width: 80vh;
     min-height: 25vh;
     display: flex;
     flex-direction: row;
