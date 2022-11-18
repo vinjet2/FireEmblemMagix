@@ -80,6 +80,7 @@ function afficherJeu(data) {
     else
         playerPower.style.opacity = "100%";
 
+    // Pour attaquer l'adversaire
     ennemi.onclick = function() { if(selectedCardUID != null){ action('ATTACK',selectedCardUID,0);}}
 
     // Cartes en Main
@@ -121,7 +122,7 @@ function afficherJeu(data) {
     data.board.forEach(card => {
         let div = carte(card.id, true, false);
         const name = carteInfo[card.id][0];
-        div.onclick = function(){if (card.state != "SLEEP"){selectedCardUID = card.uid;}} // si la carte n'est pas asleep
+        div.onclick = function(){if (card.state != "SLEEP"){selectedCardUID = card.uid;}}
         div.addEventListener('mouseover', (event) => {
             event.currentTarget.style.transform = ("translate(0,-10%)");
             descCarte(name,card.mechanics);
@@ -139,6 +140,9 @@ function afficherJeu(data) {
         else {
             div.style.border = "4px solid black";
             div.style.backgroundImage = "url(images/Cartes/"+name+"_Attack.png)";
+        }
+        if (card.state == "SLEEP"){
+            div.style.opacity = "80%";
         }
         //carteEffect.style.backgroundImage = "url(images/Effects/"+carte.mechanics+".png)";
         carteCost.innerHTML = card.cost;
@@ -177,6 +181,9 @@ function afficherJeu(data) {
         const carteMecanique = div.querySelector(".carte_Mecanique");
         const carteAttaque = div.querySelector(".carte_Attaque");
         const carteVie = div.querySelector(".carte_Vie");
+        if (card.state == "SLEEP"){
+            div.style.opacity = "80%";
+        }
         carteCost.innerHTML = card.cost;
         //carteEffect.style.backgroundImage = "url(images/Effects/"+carte.mechanics+".png)";
         div.style.backgroundImage = "url(images/Cartes/"+name+"_Attack.png)";
