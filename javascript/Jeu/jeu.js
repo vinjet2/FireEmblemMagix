@@ -69,6 +69,46 @@ function afficherJeu(data) {
     playerMana.innerHTML = data.mp;
     playerDeck.innerHTML = data.remainingCardsCount;
 
+    // Latest Actions
+    var divInfo = document.querySelector(".info_log");
+
+    while(divInfo.firstChild){
+        divInfo.removeChild(divInfo.firstChild);
+    }
+
+    data.latestActions.forEach(latestaction => {
+        var action = document.createElement("div");
+        var fromAction = document.createElement("p");
+        fromAction.innerHTML = latestaction.from;
+        action.append(fromAction);
+        var typeAction = document.createElement("p");
+        typeAction.innerHTML = latestaction.action.type;
+        action.append(typeAction);
+        if (latestaction.action.type == "PLAY" || latestaction.action.type == "ATTACK"){
+            var uiAction = document.createElement("p");
+            console.log(latestaction);
+            //var uid = document.querySelector("#"+latestaction.action.uid); Aller cherchez l'object
+            uiAction.innerHTML = "Carte : "+ latestaction.action.uid;
+            action.append(uiAction);
+        }
+        if (latestaction.action.type == "ATTACK"){
+            var targetAction = document.createElement("p");
+            if (latestaction.action.targetuid == null){
+                target = "Joueur";
+            }
+            else if (latestaction.action.targetuid == 0){
+                target = "Opponent";
+            }
+            else {
+                target = latestaction.action.targetuid;
+            }
+            targetAction.innerHTML = "Target : "+ target;
+            action.append(targetAction);
+        }
+        
+        divInfo.append(action);
+    });
+
     /* End Turn */
     if (data.yourTurn)
         playerTurn.style.opacity = "100%";
@@ -89,7 +129,7 @@ function afficherJeu(data) {
     }
 
     data.hand.forEach(card => {
-        let div = carte(card.id, false, false);
+        let div = carte(card.uid, false, false);
         const name = carteInfo[card.id][0];
         div.onclick = function(){action('PLAY',card.uid);}
         div.addEventListener('mouseover', (event) => {
@@ -106,9 +146,10 @@ function afficherJeu(data) {
             div.style.border = "4px solid rgb(10,75,10)";
         }
         carteCost.innerHTML = card.cost;
-        //carteEffect.style.backgroundImage = "url(images/Effects/"+carte.mechanics+".png)";
+        var effect = consultMechanics(card.mechanics) 
+        carteEffect.style.backgroundImage = "url(images/Effects/"+effect+".png)";
         div.style.backgroundImage = "url(images/Cartes/"+name+"_Neutral.png)";
-        carteMecanique.innerHTML = card.mechanics;
+        //carteMecanique.innerHTML = card.mechanics;
         carteAttaque.innerHTML = card.atk;
         carteVie.innerHTML = card.hp;
         playerHand.append(div);
@@ -144,9 +185,10 @@ function afficherJeu(data) {
         if (card.state == "SLEEP"){
             div.style.opacity = "80%";
         }
-        //carteEffect.style.backgroundImage = "url(images/Effects/"+carte.mechanics+".png)";
+        var effect = consultMechanics(card.mechanics) 
+        carteEffect.style.backgroundImage = "url(images/Effects/"+effect+".png)";
         carteCost.innerHTML = card.cost;
-        carteMecanique.innerHTML = card.mechanics;
+        //carteMecanique.innerHTML = card.mechanics;
         carteAttaque.innerHTML = card.atk;
         carteVie.innerHTML = card.hp;
         playerCards.append(div);
@@ -185,13 +227,56 @@ function afficherJeu(data) {
             div.style.opacity = "80%";
         }
         carteCost.innerHTML = card.cost;
-        //carteEffect.style.backgroundImage = "url(images/Effects/"+carte.mechanics+".png)";
+        var effect = consultMechanics(card.mechanics) 
+        carteEffect.style.backgroundImage = "url(images/Effects/"+effect+".png)";
         div.style.backgroundImage = "url(images/Cartes/"+name+"_Attack.png)";
-        carteMecanique.innerHTML = card.mechanics;
+        //carteMecanique.innerHTML = card.mechanics;
         carteAttaque.innerHTML = card.atk;
         carteVie.innerHTML = card.hp;
         ennemiCards.append(div);
     });
+}
+
+function consultMechanics(mechanics) {
+    var image = null;
+    
+    if (mechanics.includes("Taunt")){
+        return image = "Taunt";
+    }
+    else if (mechanics.includes("Charge")){
+        return image = "Charge";
+    }
+    else if (mechanics.includes("Stealth")){
+        return image = "Stealth";
+    }
+    else {
+        mechanics.forEach(mechanic => {
+            if (image == null){
+                if (mechanic.indexOf("Deathrattle") != -1){
+                    image = "Deathrattle";
+                }
+                else if (mechanic.indexOf("Battlecry") != -1){
+                    image = "Battlecry";
+                }
+                else if (mechanic.indexOf("Cannot attack") != -1){
+                    image = "Cannot_Attack";
+                }
+                else if (mechanic.indexOf("start of your turn") != -1){
+                    image = "StartTurn";
+                }
+                else if (mechanic.indexOf("end of your turn") != -1){
+                    image = "EndTurn";
+                }
+                else if (mechanic.indexOf("hero power") != -1){
+                    image = "HeroPower";
+                }
+                else if (mechanic.indexOf("you play a card") != -1){
+                    image = "PlayCard";
+                }
+            }
+        });
+    }
+    return image;
 }
 
 function descCarte(name, mechanics) {

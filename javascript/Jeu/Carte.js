@@ -1,9 +1,9 @@
-function carte(id,board,ennemi) {
+function carte(uid,board,ennemi) {
     var carte = document.createElement("div"); // Carte
     carte.className = "carte";
     if (board == true){carte.classList.add("B")}
     if (ennemi == true){carte.classList.add("E")}
-    carte.setAttribute("id", id);
+    carte.setAttribute("id", uid);
     var stats = document.createElement("div"); // stats
     stats.className = "carte_Stats";
     if (board == true){stats.classList.add("Bstats")}

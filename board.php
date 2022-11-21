@@ -49,7 +49,7 @@ src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>">
                         }
                     }
 			    </script>
-                <div class="log" onclick="showInfo()">Info log</div>
+                <div class="log" onclick="showInfo()">Log</div>
                 <script>
                     let activate1 = false;
                     function showInfo() {
@@ -77,7 +77,7 @@ src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>">
                 </div>
                 <div class="player_Options">
                     <div class="endTurn" onclick="action('END_TURN')">End Turn</div>
-                    <div class="player_HeroPower" onclick="action('HERO_POWER')">Hero Power</div>
+                    <div class="player_HeroPower" onclick="action('HERO_POWER')">HeroPower</div>
                 </div>
             </div>
         </div>

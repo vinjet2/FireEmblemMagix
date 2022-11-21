@@ -97,7 +97,7 @@ button { /* Tous les buttons*/
 }
 
 .button-text {
-    font-size: 36px;
+    font-size: 4vh;
     text-decoration: none;
     color: rgb(30, 111, 30);
     font-family:Georgia, 'Times New Roman', Times, serif;
@@ -131,6 +131,9 @@ button { /* Tous les buttons*/
     background: no-repeat center fixed;
     background-size: cover;
     background-image: url(../images/Background/Board_Background1.png);
+}
+#chat {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* *************************************************************************
@@ -219,13 +222,14 @@ button { /* Tous les buttons*/
 .info_log {
     min-width: 20vh;
     min-height:25vh;
-    background-color:rgb(30,75,30);
+    font-size: 2vh;
+    background-color:rgba(30, 75, 30, 0.439);
 }
 
 .description {
     max-width:20vh;
-    min-height:25vh;
-    background-color: burlywood;
+    min-height:17vh;
+    background-color: rgba(0, 0, 0, 0.42);
 }
 
 .description_portrait {
@@ -233,7 +237,7 @@ button { /* Tous les buttons*/
     background-size:100%;
     min-width:20vh;
     min-height:10vh;
-    background-color: rgb(75,30,30);
+    /*background-color: rgb(75,30,30);*/
 }
 
 .description_mechanique {
@@ -241,19 +245,19 @@ button { /* Tous les buttons*/
     font-size: 2vh;
     min-width:20vh;
     min-height:10vh;
-    background-color: rgb(30,75,30);
+    /*background-color: rgb(30,75,30);*/
 }
 
 .description_nom {
     text-align: center;
     font-size: 3vh;
     min-width:20vh;
-    min-height:10vh;
-    background-color: rgb(30,30,75);
+    min-height:4vh;
+    /*background-color: rgb(30,30,75);*/
 }
 
 .ennemis_Cards {
-    min-width: 80vh;
+    min-width: 85%;
     min-height: 25vh;
     display: flex;
     flex-direction: row;
@@ -295,37 +299,37 @@ Player //Board.php
 .surrender {
     cursor: pointer;
     min-width: 10%;
-    min-height: 25%;
-    padding-top: 10px;
+    min-height: 15%;
+    padding: 2.25vh;
     text-align: center;
-    font-size: 3vh;
+    font-size: 2.5vh;
     text-align: center;
     background: no-repeat;
-    background-size: 95%;
+    background-size: 100%;
     background-image: url(../images/Background/button_vert.png);
 }
 
 .button_chat {
     cursor: pointer;
     min-width: 10%;
-    min-height: 25%;
-    padding-top: 10px;
+    min-height: 15%;
+    padding: 2.25vh;
     text-align: center;
     font-size: 3vh;
     background: no-repeat;
-    background-size: 95%;
+    background-size: 100%;
     background-image: url(../images/Background/button_vert.png);
 }
 
 .log {
     cursor: pointer;
     min-width: 10%;
-    min-height: 25%;
-    padding-top: 10px;
+    min-height: 15%;
+    padding: 2.25vh;
     text-align: center;
     font-size: 3vh;
     background: no-repeat;
-    background-size: 95%;
+    background-size: 100%;
     background-image: url(../images/Background/button_vert.png);
 }
 
@@ -421,28 +425,27 @@ Player //Board.php
     min-width: 100%;
     min-height: 50%;
     display: flex;
-    justify-content: space-around;
 }
 
 .endTurn {
     min-width: 40%;
     min-height: 75%;
-    padding-top: 12px;
-    font-size: 3.2vh;
+    padding: 2vh 1.25vh;
+    font-size: 3vh;
     text-align: center;
     background: no-repeat;
-    background-size: 95%;
+    background-size: 98%;
     background-image: url(../images/Background/button_bleuF.png);
 }
 
 .player_HeroPower {
     min-width: 40%;
     min-height: 75%;
-    padding-top: 12px;
-    font-size: 3.2vh;
+    padding: 2vh 1.25vh;
+    font-size: 2.7vh;
     text-align: center;
     background: no-repeat;
-    background-size: 95%;
+    background-size: 100%;
     background-image: url(../images/Background/button_vert.png);
 }
 
@@ -521,7 +524,7 @@ Player //Board.php
     min-height: 100%;
     background: no-repeat right;
     background-size:60%;
-    background-image: url(../images/Effects/Taunt.png);
+    /*background-image: url(../images/Effects/Taunt.png);*/
 }
 
 .Beffect {
