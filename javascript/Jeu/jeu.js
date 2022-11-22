@@ -162,7 +162,8 @@ function afficherJeu(data) {
 
     data.board.forEach(card => {
         let div = carte(card.id, true, false);
-        const name = carteInfo[card.id][0];
+        const name = carteInfo[card.id][0] ?? "Kiran";
+        
         div.onclick = function(){if (card.state != "SLEEP"){selectedCardUID = card.uid;}}
         div.addEventListener('mouseover', (event) => {
             event.currentTarget.style.transform = ("translate(0,-10%)");
