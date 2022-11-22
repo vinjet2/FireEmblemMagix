@@ -1,6 +1,6 @@
 const carteInfo = [
     ["Kiran", ""], //New Units
-    ["Fjorm", ""],
+    ["Hana", ""],
     ["Silas", "Taunt"],
     ["Orochi", ""],
     ["Conrad", "Charge"],
@@ -93,12 +93,12 @@ const carteInfo = [
     ["Laslow", "Charge, Taunt, Battlecry"], //Add a random card to your hand
     ["Siguard&Deirdre", "EndTurn"], //At the end of your turn, reduce the cost of your cards (in hand) by 1
     ["Ike_Brave", "EndTurn"], //At the end of your turn, deal 1 damage to all enemies
-    ["94", "Charge, Taunt, Deathrattle"], //Spawn a 3-1 charge and a 1-3 taunt minion
-    ["95", "Battlecry"], //Your opponent discards a random card
-    ["96", "Stealth, Taunt, Battlecry"], //All minions transform into one that costs 1 less
-    ["97", "Battlecry"], //Confuse a random enemy minion
-    ["98", "Charge, Battlecry"], //Confuse a random enemy minion
-    ["99", "Taunt, Battlecry"], //Confuse a random enemy minion
-    ["100", "Stealth, Battlecry"], //Confuse a random enemy minion
-    ["101", "Battlecry"] //Return a random friendly minion to your hand
+    ["Colm", "Charge, Taunt, Deathrattle"], //Spawn a 3-1 charge and a 1-3 taunt minion
+    ["Fjorm", "Battlecry"], //Your opponent discards a random card
+    ["Deirdre", "Stealth, Taunt, Battlecry"], //All minions transform into one that costs 1 less
+    ["Canas", "Battlecry"], //Confuse a random enemy minion
+    ["Constance", "Charge, Battlecry"], //Confuse a random enemy minion
+    ["Cormag", "Taunt, Battlecry"], //Confuse a random enemy minion
+    ["Shigure", "Stealth, Battlecry"], //Confuse a random enemy minion
+    ["Ricken", "Battlecry"] //Return a random friendly minion to your hand
 ];
