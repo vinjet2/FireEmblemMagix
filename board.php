@@ -13,6 +13,8 @@
 <iframe id="chat" style="width:600px;height:210px;display:none;position:absolute;" onload="applyStyles(this)"
 src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>">
 </iframe>
+<div class="message_erreur"></div>
+<div class="Character"></div>
 <div class="board">
     <div class="ennemis">
         <div class="ennemis_UI">

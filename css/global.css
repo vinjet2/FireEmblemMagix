@@ -132,8 +132,29 @@ button { /* Tous les buttons*/
     background-size: cover;
     background-image: url(../images/Background/Board_Background1.png);
 }
+
 #chat {
     background-color: rgba(0, 0, 0, 0.5);
+}
+
+.message_erreur {
+    min-width: 180px;
+    min-height: 40px;
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    background-color: chocolate;
+    display: none;
+}
+
+.Character {
+    min-width: 50vh;
+    min-height: 75vh;
+    position:absolute;
+    left: 35%;
+    top: 10%;
+    background-color: brown;
+    display: none;
 }
 
 /* *************************************************************************
