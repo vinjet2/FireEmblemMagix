@@ -12,10 +12,17 @@
 <script src="javascript/javascript.js"></script>
 <div class="index" id="Background">
     <div id="chibi_byleth"></div>
-	<div class="title"><img src="images/UI/FireEmblemIcon.png" alt="FireEmblem"></div>
+	<div class="title"><img src="images/UI/FireEmblemIcon.png" alt="FireEmblemMAGIX"></div>
 	<div class="text_info"><p>   Move with < and > arrow   Change from Male to Female with V arrow</p></div>
 	<div class="formContainer">
         <form action="index.php" method="POST">
+            <?php
+                if ($data["hasConnectionError"]) {
+                    ?>
+                    <div><strong>Erreur : </strong>Connexion érronnée</div>
+                    <?php
+                }
+            ?>
             <div class="formSeparator"></div>
             <div class="formLabel"><label for="username">Nom d'usager : </label></div>
             <div class="formInput"><input type="text" name="username" id="username"></div>

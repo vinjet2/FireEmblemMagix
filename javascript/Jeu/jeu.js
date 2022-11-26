@@ -7,19 +7,19 @@ const state = () => {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data); // contient les cartes/état du jeu.
+            console.log(data);
             if (data === "INVALID_KEY") {
-                console.log("Clé Invalide");
+                messageErreur("Clé Invalide");
             }
             else if (data === "WAITING") {
-
+                messageErreur("Downloading...");
             }
             else if (data === "LAST_GAME_WON") {
-                //console.log("Game Won");
+                messageErreur("Game Won!");
                 //setInterval(window.location.href="lobby.php", 5000);
             }
             else if (data === "LAST_GAME_LOST") {
-                //console.log("Game Lost");
+                messageErreur("Game Lost");
                 //setInterval(window.location.href="lobby.php" ,5000);
             }
             else {
@@ -124,10 +124,7 @@ function afficherJeu(data) {
     ennemi.onclick = function() { if(selectedCardUID != null){ action('ATTACK',selectedCardUID,0);}}
 
     // Cartes en Main
-    while(playerHand.firstChild){
-        playerHand.removeChild(playerHand.firstChild);
-    }
-
+    while(playerHand.firstChild){playerHand.removeChild(playerHand.firstChild);}
     data.hand.forEach(card => {
         let div = carte(card.uid, false, false);
         const name = carteInfo[card.id][0];
@@ -149,17 +146,15 @@ function afficherJeu(data) {
         var effect = consultMechanics(card.mechanics) 
         carteEffect.style.backgroundImage = "url(images/Effects/"+effect+".png)";
         div.style.backgroundImage = "url(images/Cartes/"+name+"_Neutral.png)";
-        //carteMecanique.innerHTML = card.mechanics;
+        var texte = consultTxtMechanics(card.mechanics);
+        carteMecanique.innerHTML = texte;
         carteAttaque.innerHTML = card.atk;
         carteVie.innerHTML = card.hp;
         playerHand.append(div);
     });
 
     // Cartes sur le Board
-    while(playerCards.firstChild){
-        playerCards.removeChild(playerCards.firstChild);
-    }
-
+    while(playerCards.firstChild){playerCards.removeChild(playerCards.firstChild);}
     data.board.forEach(card => {
         let div = carte(card.id, true, false);
         const name = carteInfo[card.id][0] ?? "Kiran";
@@ -189,7 +184,8 @@ function afficherJeu(data) {
         var effect = consultMechanics(card.mechanics) 
         carteEffect.style.backgroundImage = "url(images/Effects/"+effect+".png)";
         carteCost.innerHTML = card.cost;
-        //carteMecanique.innerHTML = card.mechanics;
+        var texte = consultTxtMechanics(card.mechanics);
+        carteMecanique.innerHTML = texte;
         carteAttaque.innerHTML = card.atk;
         carteVie.innerHTML = card.hp;
         playerCards.append(div);
@@ -199,7 +195,6 @@ function afficherJeu(data) {
     while(ennemiHand.firstChild){
         ennemiHand.removeChild(ennemiHand.firstChild);
     }
-
     for (let i = 0; i < data.opponent.handSize; i++) {
         let div = document.createElement("div");
         div.className = "ennemis_card";
@@ -207,10 +202,7 @@ function afficherJeu(data) {
     }
 
     // Cartes sur le Board Ennemi
-    while(ennemiCards.firstChild){
-        ennemiCards.removeChild(ennemiCards.firstChild);
-    }
-
+    while(ennemiCards.firstChild){ennemiCards.removeChild(ennemiCards.firstChild);}
     data.opponent.board.forEach(card => {
         let div = carte(card.id, false, true);
         const name = carteInfo[card.id][0];
@@ -228,10 +220,11 @@ function afficherJeu(data) {
             div.style.opacity = "80%";
         }
         carteCost.innerHTML = card.cost;
-        var effect = consultMechanics(card.mechanics) 
+        var effect = consultMechanics(card.mechanics);
         carteEffect.style.backgroundImage = "url(images/Effects/"+effect+".png)";
         div.style.backgroundImage = "url(images/Cartes/"+name+"_Attack.png)";
-        //carteMecanique.innerHTML = card.mechanics;
+        var texte = consultTxtMechanics(card.mechanics);
+        carteMecanique.innerHTML = texte;
         carteAttaque.innerHTML = card.atk;
         carteVie.innerHTML = card.hp;
         ennemiCards.append(div);
@@ -280,6 +273,44 @@ function consultMechanics(mechanics) {
     return image;
 }
 
+function consultTxtMechanics(mechanics) {
+    var texte = "";
+    if (mechanics.includes("Taunt")){
+        texte = texte + "Taunt ";
+    }
+    if (mechanics.includes("Charge")){
+        texte = texte + "Charge ";
+    }
+    if (mechanics.includes("Stealth")){
+        texte = texte + "Stealth ";
+    }
+    mechanics.forEach(mechanic => {
+        if (mechanic.indexOf("Deathrattle") != -1){
+            texte = texte + "Deathrattle ";
+        }
+        if (mechanic.indexOf("Battlecry") != -1){
+            texte = texte + "Battlecry ";
+        }
+        if (mechanic.indexOf("Cannot attack") != -1){
+            texte = texte + "Cannot_Attack ";
+        }
+        if (mechanic.indexOf("start of your turn") != -1){
+            texte = texte + "StartTurn ";
+        }
+        if (mechanic.indexOf("end of your turn") != -1){
+            texte = texte + "EndTurn ";
+        }
+        if (mechanic.indexOf("hero power") != -1){
+            texte = texte + "HeroPower ";
+        }
+        if (mechanic.indexOf("you play a card") != -1){
+            texte = texte + "PlayCard ";
+        }
+    });
+    return texte;
+}
+
+// Description des Cartes (info_log)
 function descCarte(name, mechanics) {
     var portrait = document.querySelector(".description_portrait");
     portrait.style.backgroundImage = "url(images/Cartes/"+name+".png)";
@@ -289,7 +320,8 @@ function descCarte(name, mechanics) {
     mecanique.innerHTML = mechanics;
 }
 
-function action(type, id, targetid) {
+// Les Actions du joueur
+function action(type, id, targetid) { 
     if (yourTurn) {
         formData = new FormData();
         formData.append("action",type);
@@ -311,40 +343,40 @@ function action(type, id, targetid) {
                     console.log(data);
                 }
                 else if (data == "INVALID_KEY") {
-                    console.log("Clé Invalide");
+                    messageErreur("Clé Invalide.");
                 }
                 else if (data == "INVALID_ACTION") {
-                    console.log("Action Invalide");
+                    messageErreur("Action Invalide.");
                 }
                 else if (data == "ACTION_IS_NOT_AN_OBJECT") {
-                    console.log("Mauvaise structure de données");
+                    messageErreur("Mauvaise structure de données.");
                 }
                 else if (data == "NOT_ENOUGH_ENERGY") {
-                    console.log("Pas assez d'énergie");
+                    messageErreur("Pas assez d'énergie.");
                 }
                 else if (data == "BOARD_IS_FULL") {
-                    console.log("Pas assez de place pour la carte");
+                    messageErreur("Pas assez de place pour la carte.");
                 }
                 else if (data == "CARD_NOT_IN_HAND") {
-                    console.log("La carte n'est pas dans votre main");
+                    messageErreur("La carte n'est pas dans votre main.");
                 }
                 else if (data == "CARD_IS_SLEPPING") {
-                    console.log("Carte ne peut être jouée ce tour-ci");
+                    messageErreur("Carte ne peut être jouée ce tour-ci.");
                 }
                 else if (data == "MUST_ATTACK_TAUNT_FIRST") {
-                    console.log("La carte taunt empêche ce coup");
+                    messageErreur("Une carte Taunt empêche ce coup!");
                 }
                 else if (data == "OPPONENT_CARD_NOT_FOUND") {
-                    console.log("La carte attaquée n'est pas présente sur le jeu");
+                    messageErreur("La carte attaquée n'est pas présente sur le jeu.");
                 }
                 else if (data == "OPPONENT_CARD_HAS_STEALTH") {
-                    console.log("La carte a l'effect de Stealth");
+                    messageErreur("La carte a l'effect de Stealth.");
                 }
                 else if (data == "CARD_NOT_FOUND") {
-                    console.log("La carte n'est pas présente");
+                    messageErreur("La carte n'est pas présente.");
                 }
                 else if (data == "HERO_POWER_ALREADY_USED") {
-                    console.log("Pouvoir déjà utilisé pour ce tour");
+                    messageErreur("HeroPower déjà utilisé pour ce tour.");
                 }
                 else {
 
@@ -352,8 +384,20 @@ function action(type, id, targetid) {
             })
     }
     else {
-        console.log("Ennemy turn");
+        messageErreur("Ennemy turn");
     }
+}
+
+function messageErreur(erreur ) {
+    let divMessage = document.querySelector(".message_erreur");
+    divMessage.innerHTML = erreur;
+    divMessage.style.display = "block";
+    window.setTimeout(fermerErreur,3000);
+}
+
+function fermerErreur(){
+    let divMessage = document.querySelector(".message_erreur");
+    divMessage.style.display = "none";
 }
 /*{"remainingTurnTime":13,
 "heroPowerAlreadyUsed":false,
