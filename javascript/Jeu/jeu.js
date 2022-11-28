@@ -1,5 +1,5 @@
 let yourTurn = true;
-let selectedCardUID;
+let selectedCardUID, selectedCardName;
 const state = () => {
     fetch("ajax-state.php", {   // Il faut créer cette page et son contrôleur appelle 
         method: "POST",        // l’API (games/state)
@@ -16,17 +16,20 @@ const state = () => {
             }
             else if (data === "LAST_GAME_WON") {
                 messageErreur("Game Won!");
-                //setInterval(window.location.href="lobby.php", 5000);
+                window.setInterval(retourMenu,5000);
             }
             else if (data === "LAST_GAME_LOST") {
                 messageErreur("Game Lost");
-                //setInterval(window.location.href="lobby.php" ,5000);
+                window.setInterval(retourMenu,5000);
             }
             else {
                 afficherJeu(data);
             }
             setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
         })
+}
+function retourMenu() {
+    window.location.href="lobby.php";
 }
 
 window.addEventListener("load", () => {
@@ -86,7 +89,7 @@ function afficherJeu(data) {
         action.append(typeAction);
         if (latestaction.action.type == "PLAY" || latestaction.action.type == "ATTACK"){
             var uiAction = document.createElement("p");
-            console.log(latestaction);
+            //console.log(latestaction);
             //var uid = document.querySelector("#"+latestaction.action.uid); Aller cherchez l'object
             uiAction.innerHTML = "Carte : "+ latestaction.action.uid;
             action.append(uiAction);
@@ -127,8 +130,8 @@ function afficherJeu(data) {
     while(playerHand.firstChild){playerHand.removeChild(playerHand.firstChild);}
     data.hand.forEach(card => {
         let div = carte(card.uid, false, false);
-        const name = carteInfo[card.id][0];
-        div.onclick = function(){action('PLAY',card.uid);}
+        const name = carteInfo[card.id][0] ?? "Kiran";
+        div.onclick = function(){selectedCardName = name; action('PLAY',card.uid);}
         div.addEventListener('mouseover', (event) => {
             event.currentTarget.style.transform = ("translate(0,-10%)");
             descCarte(name,card.mechanics);
@@ -159,7 +162,7 @@ function afficherJeu(data) {
         let div = carte(card.id, true, false);
         const name = carteInfo[card.id][0] ?? "Kiran";
         
-        div.onclick = function(){if (card.state != "SLEEP"){selectedCardUID = card.uid;}}
+        div.onclick = function(){if (card.state != "SLEEP"){selectedCardUID = card.uid;selectedCardName = name;}}
         div.addEventListener('mouseover', (event) => {
             event.currentTarget.style.transform = ("translate(0,-10%)");
             descCarte(name,card.mechanics);
@@ -205,7 +208,8 @@ function afficherJeu(data) {
     while(ennemiCards.firstChild){ennemiCards.removeChild(ennemiCards.firstChild);}
     data.opponent.board.forEach(card => {
         let div = carte(card.id, false, true);
-        const name = carteInfo[card.id][0];
+        if (card.id >= carteInfo.length){const name = "Kiran";}
+        else {const name = carteInfo[card.id][0];}
         div.onclick = function() { if(selectedCardUID != null){ action('ATTACK',selectedCardUID,card.uid);}}
         div.addEventListener('mouseover', (event) => {
             descCarte(name,card.mechanics);
@@ -331,6 +335,14 @@ function action(type, id, targetid) {
         if (targetid != null) {
             formData.append("targetuid",targetid);
         }
+        if (type == "PLAY"){
+            console.log("Play");
+            showCharacter("Attack",selectedCardName);
+            // Ajouter la carte a la Base de donnee
+        }
+        else if (type == 'ATTACK'){
+            showCharacter("Special",selectedCardName);
+        }
         fetch("ajax-state.php", {
             method: "POST",
             credentials : 'include',
@@ -338,7 +350,6 @@ function action(type, id, targetid) {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 if (typeof data != "string") {
                     console.log(data);
                 }
@@ -379,26 +390,39 @@ function action(type, id, targetid) {
                     messageErreur("HeroPower déjà utilisé pour ce tour.");
                 }
                 else {
-
+                    
                 }
             })
-    }
-    else {
-        messageErreur("Ennemy turn");
-    }
+        }
+        else {
+            messageErreur("Ennemy turn");
+        }
+}
+
+function showCharacter(action, character) {
+    let divCharacter = document.querySelector(".Character");
+    divCharacter.style.backgroundImage = "url(images/Cartes/"+character+"_"+action+".png)";
+    divCharacter.style.display = "block";
+    window.setTimeout(hideCharacter,2000);
+}
+
+function hideCharacter() {
+    let divCharacter = document.querySelector(".Character");
+    divCharacter.style.display = "none";
 }
 
 function messageErreur(erreur ) {
     let divMessage = document.querySelector(".message_erreur");
     divMessage.innerHTML = erreur;
     divMessage.style.display = "block";
-    window.setTimeout(fermerErreur,3000);
+    window.setTimeout(fermerErreur,2000);
 }
 
 function fermerErreur(){
     let divMessage = document.querySelector(".message_erreur");
     divMessage.style.display = "none";
 }
+
 /*{"remainingTurnTime":13,
 "heroPowerAlreadyUsed":false,
 "yourTurn":true,

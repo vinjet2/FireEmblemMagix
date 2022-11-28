@@ -77,6 +77,14 @@ button { /* Tous les buttons*/
     background-image: url(../images/Background/Sothis_Background.jpg);
 }
 
+.name {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 3vh;
+    position: absolute;
+    left: 115vh;
+    top: 1vh;
+}
+
 .menu {
     width: fit-content;
     position: fixed;
@@ -158,8 +166,10 @@ button { /* Tous les buttons*/
     position:absolute;
     left: 35%;
     top: 10%;
-    background-color: brown;
+    background: center no-repeat;
+    background-size: 100%;
     display: none;
+    z-index:+1
 }
 
 /* *************************************************************************
