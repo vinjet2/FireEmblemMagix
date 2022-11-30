@@ -127,6 +127,47 @@ button { /* Tous les buttons*/
     right:0;
     background-color: black;
 }
+/* *************************************************************************
+ Stats .PHP
+\* *************************************************************************/
+
+.stats {
+    /* min-width: 100vh; */
+    min-height: 100vh;
+    background: no-repeat center center fixed;
+    background-size: cover;
+    background-image: url(../images/Background/fire-emblem-fates.png);
+    display: flex;
+    flex-direction: column;
+}
+
+.result_stats {
+    max-width: 50vh;
+    background-color: cornflowerblue;
+    opacity: 60%;
+    border: solid black 2px;
+    display: flex;
+}
+
+.result {
+    background-color: rgb(123, 100, 237);
+    opacity: 60%;
+    border: solid black 2px;
+}
+
+.button_stats {
+    text-align: center;
+    font-size: large;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.button_retour {
+    width: 100px;
+    height: 100px;
+    background: no-repeat center;
+    background-image: url(../images//UI/Feh_asleep.png);
+    background-size: 100%;
+}
 
 /* *************************************************************************
  Board .PHP

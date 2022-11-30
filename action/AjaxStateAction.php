@@ -1,5 +1,6 @@
 <?php
     require_once("action/CommonAction.php");
+    require_once("action/DAO/CarteDAO.php");
 
     class AjaxStateAction extends CommonAction {
 
@@ -11,6 +12,10 @@
             $result = null;
             $data = [];
             $data["key"] = $_SESSION["key"];
+
+            if (isset($_POST["carte_id"])){
+                CarteDAO::addCarte($_POST["carte_id"]);
+            }
 
             if (isset($_POST["action"])){
                 $data["type"] = $_POST["action"];

@@ -1,5 +1,5 @@
 let yourTurn = true;
-let selectedCardUID, selectedCardName;
+let selectedCardUID, selectedCardName, selectedCardUI;
 const state = () => {
     fetch("ajax-state.php", {   // Il faut créer cette page et son contrôleur appelle 
         method: "POST",        // l’API (games/state)
@@ -130,8 +130,10 @@ function afficherJeu(data) {
     while(playerHand.firstChild){playerHand.removeChild(playerHand.firstChild);}
     data.hand.forEach(card => {
         let div = carte(card.uid, false, false);
-        const name = carteInfo[card.id][0] ?? "Kiran";
-        div.onclick = function(){selectedCardName = name; action('PLAY',card.uid);}
+        let name;
+        if (card.id >= carteInfo.length){name = "Kiran";}
+        else {name = carteInfo[card.id][0];}
+        div.onclick = function(){selectedCardName = name;selectedCardUI = card.id; action('PLAY',card.uid);}
         div.addEventListener('mouseover', (event) => {
             event.currentTarget.style.transform = ("translate(0,-10%)");
             descCarte(name,card.mechanics);
@@ -160,8 +162,9 @@ function afficherJeu(data) {
     while(playerCards.firstChild){playerCards.removeChild(playerCards.firstChild);}
     data.board.forEach(card => {
         let div = carte(card.id, true, false);
-        const name = carteInfo[card.id][0] ?? "Kiran";
-        
+        let name;
+        if (card.id >= carteInfo.length){name = "Kiran";}
+        else {name = carteInfo[card.id][0];}
         div.onclick = function(){if (card.state != "SLEEP"){selectedCardUID = card.uid;selectedCardName = name;}}
         div.addEventListener('mouseover', (event) => {
             event.currentTarget.style.transform = ("translate(0,-10%)");
@@ -208,8 +211,9 @@ function afficherJeu(data) {
     while(ennemiCards.firstChild){ennemiCards.removeChild(ennemiCards.firstChild);}
     data.opponent.board.forEach(card => {
         let div = carte(card.id, false, true);
-        if (card.id >= carteInfo.length){const name = "Kiran";}
-        else {const name = carteInfo[card.id][0];}
+        let name;
+        if (card.id >= carteInfo.length){name = "Kiran";}
+        else {name = carteInfo[card.id][0];}
         div.onclick = function() { if(selectedCardUID != null){ action('ATTACK',selectedCardUID,card.uid);}}
         div.addEventListener('mouseover', (event) => {
             descCarte(name,card.mechanics);
@@ -339,6 +343,17 @@ function action(type, id, targetid) {
             console.log("Play");
             showCharacter("Attack",selectedCardName);
             // Ajouter la carte a la Base de donnee
+            formDataBD = new FormData();
+            formDataBD.append("carte_id", selectedCardUI);
+            fetch("ajax-state.php", {
+                method: "POST",
+                credentials : 'include',
+                body: formDataBD
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
         }
         else if (type == 'ATTACK'){
             showCharacter("Special",selectedCardName);
