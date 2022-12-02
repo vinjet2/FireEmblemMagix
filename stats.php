@@ -11,19 +11,22 @@
     <div class="result_stats">
         <?php
             foreach($data["cartes"] as $carte) {
-                var_dump($carte);
+                $nbcarte = sizeof($data["cartes"]);
                 ?>
                 <div class="result">
-                    <p> ID : <?= $carte["carte"] ?></p>
-                    <p>Personnage :  </p>
-                    <p> Nombre de fois Jouer: <?= $carte["nbjouer"] ?></p>
+                    <p>ID : <?= $carte["carte"] ?></p>
+                    <p>Personnage : <?= $carte["cartename"] ?></p>
+                    <div style="background-image:url(images/Cartes/<?= $carte["cartename"] ?>.png);background-size:100%;min-width:20vh;min-height:10vh;"></div>
+                    <p>Nombre de fois Jouer : <?= $carte["nbjouer"] ?></p>
+                    <p>Pourcentage : <?= ($carte["nbjouer"] * 100)/ $nbcarte ?> %</p>
                 </div>
                 <?php
             }
         ?>
     </div>
     <a href="stats.php?type=Delete"><div class="button_stats">Delete Stats</div></a>
-    <a href="lobby.php"><div class="button_retour" id="feh" onmouseover="wakeupFeh()" onmouseout="sleepyFeh()"></div></a>
+    <div class="exit_stats"><a href="lobby.php"><div class="button_retour" id="feh" onmouseover="wakeupFeh()" onmouseout="sleepyFeh()"></div></a></div>
+    
 </div>
 <script>
     function wakeupFeh() {document.getElementById("feh").style.backgroundImage = "url('images/UI/Feh_awake.png')";}

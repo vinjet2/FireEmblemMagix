@@ -148,8 +148,9 @@ function afficherJeu(data) {
             div.style.border = "4px solid rgb(10,75,10)";
         }
         carteCost.innerHTML = card.cost;
-        var effect = consultMechanics(card.mechanics) 
-        carteEffect.style.backgroundImage = "url(images/Effects/"+effect+".png)";
+        var effect = consultMechanics(card.mechanics);
+        if (effect != null)
+            carteEffect.style.backgroundImage = "url(images/Effects/"+effect+".png)";
         div.style.backgroundImage = "url(images/Cartes/"+name+"_Neutral.png)";
         var texte = consultTxtMechanics(card.mechanics);
         carteMecanique.innerHTML = texte;
@@ -188,7 +189,8 @@ function afficherJeu(data) {
             div.style.opacity = "80%";
         }
         var effect = consultMechanics(card.mechanics) 
-        carteEffect.style.backgroundImage = "url(images/Effects/"+effect+".png)";
+        if (effect != null)
+            carteEffect.style.backgroundImage = "url(images/Effects/"+effect+".png)";
         carteCost.innerHTML = card.cost;
         var texte = consultTxtMechanics(card.mechanics);
         carteMecanique.innerHTML = texte;
@@ -229,7 +231,8 @@ function afficherJeu(data) {
         }
         carteCost.innerHTML = card.cost;
         var effect = consultMechanics(card.mechanics);
-        carteEffect.style.backgroundImage = "url(images/Effects/"+effect+".png)";
+        if (effect != null)
+            carteEffect.style.backgroundImage = "url(images/Effects/"+effect+".png)";
         div.style.backgroundImage = "url(images/Cartes/"+name+"_Attack.png)";
         var texte = consultTxtMechanics(card.mechanics);
         carteMecanique.innerHTML = texte;
@@ -340,11 +343,12 @@ function action(type, id, targetid) {
             formData.append("targetuid",targetid);
         }
         if (type == "PLAY"){
-            console.log("Play");
+            // console.log("Play");
             showCharacter("Attack",selectedCardName);
             // Ajouter la carte a la Base de donnee
             formDataBD = new FormData();
             formDataBD.append("carte_id", selectedCardUI);
+            formDataBD.append("carte_name", selectedCardName);
             fetch("ajax-state.php", {
                 method: "POST",
                 credentials : 'include',
@@ -352,7 +356,7 @@ function action(type, id, targetid) {
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
             })
         }
         else if (type == 'ATTACK'){
@@ -366,7 +370,7 @@ function action(type, id, targetid) {
             .then(response => response.json())
             .then(data => {
                 if (typeof data != "string") {
-                    console.log(data);
+                    //console.log(data);
                 }
                 else if (data == "INVALID_KEY") {
                     messageErreur("Clé Invalide.");

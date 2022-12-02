@@ -137,19 +137,19 @@ button { /* Tous les buttons*/
     background: no-repeat center center fixed;
     background-size: cover;
     background-image: url(../images/Background/fire-emblem-fates.png);
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
 }
 
 .result_stats {
-    max-width: 50vh;
-    background-color: cornflowerblue;
-    opacity: 60%;
+    max-width: 200vh;
+    background-color:rgba(100, 149, 237,0.6);
     border: solid black 2px;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .result {
+    min-width: 24.3vh;
     background-color: rgb(123, 100, 237);
     opacity: 60%;
     border: solid black 2px;
@@ -159,6 +159,11 @@ button { /* Tous les buttons*/
     text-align: center;
     font-size: large;
     font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.exit_stats {
+    position: absolute;
+    bottom: 0;
 }
 
 .button_retour {
