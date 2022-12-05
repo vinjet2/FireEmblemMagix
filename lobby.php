@@ -13,7 +13,7 @@
         	src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>/large">
 		</iframe> -->
 
-		<iframe id="chat" style="width:695px;height:240px;position:relative;z-index:-1" onload="applyStyles(this)"
+		<iframe id="chat" style="width:695px;height:240px;position:relative;z-index:0" onload="applyStyles(this)"
 			src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION["key"] ?>">
 		</iframe>
 	</div>
