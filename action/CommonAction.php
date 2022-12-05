@@ -30,12 +30,12 @@
 
             $data = $this->executeAction();
             $data["username"] = $_SESSION["username"] ?? "Invité";
-            // Pas sur de comprendre 
+            
             // $data["isSignedIn"] = $_SESSION["visibility"] > CommonAction::$VISIBILITY_PUBLIC; 
 
             return $data;
         }
-        // Pas encore utilisé
+        
         public function isLoggedIn() {
             return $_SESSION["visibility"] > CommonAction::$VISIBILITY_PUBLIC;
         }

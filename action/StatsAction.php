@@ -11,6 +11,7 @@
         protected function executeAction() {
             $cartes = CarteDAO::getCartes();
 
+            // Vider les valeurs de la Base de Donnée
             if(isset($_GET["type"])) {
                 if ($_GET["type"] == "Delete"){
                     CarteDAO::emptyCartes();

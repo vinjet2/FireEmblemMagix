@@ -1,7 +1,7 @@
 let yourTurn = true;
 let selectedCardUID, selectedCardName, selectedCardUI;
 const state = () => {
-    fetch("ajax-state.php", {   // Il faut créer cette page et son contrôleur appelle 
+    fetch("ajax-state.php", {
         method: "POST",        // l’API (games/state)
         credentials:'include'
     })
@@ -74,7 +74,7 @@ function afficherJeu(data) {
 
     // Latest Actions
     var divInfo = document.querySelector(".info_log");
-
+    
     while(divInfo.firstChild){
         divInfo.removeChild(divInfo.firstChild);
     }
@@ -343,7 +343,6 @@ function action(type, id, targetid) {
             formData.append("targetuid",targetid);
         }
         if (type == "PLAY"){
-            // console.log("Play");
             showCharacter("Attack",selectedCardName);
             // Ajouter la carte a la Base de donnee
             formDataBD = new FormData();
@@ -422,7 +421,7 @@ function showCharacter(action, character) {
     let divCharacter = document.querySelector(".Character");
     divCharacter.style.backgroundImage = "url(images/Cartes/"+character+"_"+action+".png)";
     divCharacter.style.display = "block";
-    window.setTimeout(hideCharacter,2000);
+    window.setTimeout(hideCharacter,1000);
 }
 
 function hideCharacter() {
@@ -434,7 +433,7 @@ function messageErreur(erreur ) {
     let divMessage = document.querySelector(".message_erreur");
     divMessage.innerHTML = erreur;
     divMessage.style.display = "block";
-    window.setTimeout(fermerErreur,2000);
+    window.setTimeout(fermerErreur,1000);
 }
 
 function fermerErreur(){

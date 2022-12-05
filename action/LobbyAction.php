@@ -20,7 +20,7 @@
 					$result = parent::callAPI("signout", "key");
 
 					if ($result === "INVALID KEY") {
-
+						$messageErreur = "Problème de cléf";
 					}
 					else {
 						unset($_SESSION["key"]);

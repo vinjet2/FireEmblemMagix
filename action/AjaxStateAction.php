@@ -13,10 +13,12 @@
             $data = [];
             $data["key"] = $_SESSION["key"];
 
+            // Ajout d'une Carte à la Base de Donnée
             if (isset($_POST["carte_id"])){
                 CarteDAO::addCarte($_POST["carte_id"],$_POST["carte_name"]);
             }
 
+            // CallAPI pour le state & les actions
             if (isset($_POST["action"])){
                 $data["type"] = $_POST["action"];
                 if (isset($_POST["uid"])){
