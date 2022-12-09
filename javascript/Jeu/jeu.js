@@ -16,11 +16,11 @@ const state = () => {
             }
             else if (data === "LAST_GAME_WON") {
                 messageErreur("Game Won!");
-                window.setInterval(retourMenu,5000);
+                window.setInterval(retourMenu,4000);
             }
             else if (data === "LAST_GAME_LOST") {
                 messageErreur("Game Lost");
-                window.setInterval(retourMenu,5000);
+                window.setInterval(retourMenu,4000);
             }
             else {
                 afficherJeu(data);
