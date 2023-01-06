@@ -1,7 +1,8 @@
 # FireEmblemMagix - Vincent Comtois - Projet Final pour Web3
 
-Language Informatique Utilisés
+Projet de jeu de Carte MAGIX  
 
-HTML/css/Javascript/PHP/AJAX 
-Avec Connexion à une BD postgreSQL
-Avec Connexion à un API (magix.apps-de-cours.com/api)
+Language Informatique Utilisés :
+  HTML/CSS/Javascript/PHP/AJAX 
+ - Avec Connexion à une BD postgreSQL
+ - Avec Connexion à un API (magix.apps-de-cours.com/api)
